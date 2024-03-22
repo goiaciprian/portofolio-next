@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { Providers } from "@/app/providers";
 
 import '@/app/global.css'
 import { Navigation } from "@/app/components/Navigation.component";
 import { Footer } from "@/app/components/Footer.component";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Potrofolio",
