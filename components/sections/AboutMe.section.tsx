@@ -1,6 +1,5 @@
-import { SnapSection } from "@/app/components/SnapSection.component";
-import { Box, Text } from '@chakra-ui/react'
-import { Modal } from "@/app/components/Modal";
+import { SnapSection } from "@/components/SnapSection.component";
+import { Modal } from "../modal";
 
 const moreAboutMe = [
     "Over the past 6 years, I've immersed myself in the world of coding, with 2 of those years being spent at impressive companies like Trimble and Ensemble Software. Those experiences weren't just about work; they were about soaking in knowledge from experts and honing my skills in real-world scenarios.\n",
@@ -13,16 +12,16 @@ const moreAboutMe = [
 export function AboutMe() {
     return (
         <SnapSection id="aboutme" >
-            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '10vh', gap: '10vh' }}>
-                <Text variant={'big'} lineHeight={'2.5'} >
-                    Hey there! I&apos;m a 23-year-old programmer hailing from the vibrant land of Romania. For
+            <div className="flex flex-col items-center justify-center p-[10vh] gap-[10vh]">
+                <p  className="leading-[2.5]" >
+                    Hey there! I&apos;m a 24-year-old programmer hailing from the vibrant land of Romania. For
                     the past 6 years, I&apos;ve been immersed in the world of coding. I&apos;ve spent time at
                     companies like Trimble and Ensemble Software, as well as 2 years as a full stack
                     developer during my college years. This year, I proudly completed my studies in
                     electrical engineering and computer science. Curiosity drives me—I&apos;m always eager to
                     learn and discuss new ideas. Beyond tech, I&apos;m a huge fan of both movies and TV series.
                     The art of cinematography never ceases to amaze me.
-                </Text>
+                </p>
                 <Modal
                     closeButtonText="Close"
                     contentType="text"
@@ -30,7 +29,7 @@ export function AboutMe() {
                     openButtonText="More about me"
                     text={moreAboutMe}
                 />
-            </Box>
+            </div>
         </SnapSection>
     )
 }

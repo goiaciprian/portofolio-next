@@ -1,8 +1,6 @@
-"use client"
-
-import { Button } from "@chakra-ui/react"
 import React from 'react';
 import { ModalRender } from "./ModalRender.component";
+import {Button} from "@/components/ui/button";
 
 type ModalProps = {
     headerText: string;
@@ -27,21 +25,17 @@ export function Modal({
     text = []
 }: ModalProps) {
 
-    const [isOpen, setOpen] = React.useState(false);
-
     return (
         <>
-            <Button onClick={() => setOpen(true)} variant={'moonstone'} >{openButtonText}</Button>
             <ModalRender
                 contentType={contentType}
                 text={text}
                 headerText={headerText}
-                isOpen={isOpen}
                 nodes={nodes}
-                onClose={() => setOpen(false)}
                 onCloseButton={
-                    <Button onClick={() => setOpen(false)} variant={'moonstone'} >{closeButtonText}</Button>
+                    <Button>{closeButtonText}</Button>
                 }
+                openButtonText={openButtonText}
             />
         </>
     )

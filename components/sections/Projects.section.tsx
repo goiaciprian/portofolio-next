@@ -1,4 +1,4 @@
-import { SnapSection } from "@/app/components/SnapSection.component";
+import { SnapSection } from "@/components/SnapSection.component";
 
 export function Projects() {
     return (
