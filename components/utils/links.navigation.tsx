@@ -1,4 +1,4 @@
-import { Link } from "@/app/components/Link.component"
+import { Link } from "@/components/Link.component"
 
 const links = [
     <Link key="aboutme" href={'/#aboutme'} >About Me</Link>,

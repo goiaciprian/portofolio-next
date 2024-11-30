@@ -1,9 +1,8 @@
 
-import { WelcomeSection } from "@/app/sections/Welcome.section";
-import { AboutMe } from "@/app/sections/AboutMe.section";
-import { Projects } from "@/app/sections/Projects.section";
-import { Contact } from "@/app/sections/Contact.section";
-import { BackTop } from "./components/BackTop.component";
+import { WelcomeSection } from "@/components/sections/Welcome.section";
+import { AboutMe } from "@/components/sections/AboutMe.section";
+import { Projects } from "@/components/sections/Projects.section";
+import { Contact } from "@/components/sections/Contact.section";
 
 export default function Home() {
   return (

@@ -2,8 +2,9 @@
 const nextConfig = {
   images: {
     domains: [
-      'cipriang.tech',
-      'dev.cipriang.tech'
+      'cipriang-software.work',
+      'www.cipriang-software.work',
+      'dev.cipriang-software.work'
     ]
   }
 };

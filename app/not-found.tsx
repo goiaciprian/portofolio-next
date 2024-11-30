@@ -1,20 +1,19 @@
-import { SnapSection } from "./components/SnapSection.component";
-import { AbsoluteCenter, Box, Divider, Text } from '@chakra-ui/react'
+import { SnapSection } from "@/components/SnapSection.component";
 
 export default function NotFound() {
     return (
         <SnapSection height="65vh" >
-            <Box sx={{ display: 'flex', flexDirection: 'column', width: '30%', alignItems: 'center' }} >
-                <Text as={"h1"} variant={'v-big'}>Page not found</Text>
-                <Box position={'relative'} padding={10} width={'100%'} >
-                    <Divider bg={'brand.300'} orientation="horizontal" width={'100%'} />
-                    <AbsoluteCenter bg={"brand.black"} >
-                        <Text as={'h1'} variant='v-big'>
+            <div className="flex flex-col w-{30%} items-center">
+                <h1>Page not found</h1>
+                <div className="relative p-{10px} w-full" >
+                    {/*<Divider bg={'brand.300'} orientation="horizontal" width={'100%'} />*/}
+                    <div className="bg-this_black absolute top-1/2 bottom-1/2">
+                        <h1>
                             404
-                        </Text>
-                    </AbsoluteCenter>
-                </Box>
-            </Box>
+                        </h1>
+                    </div>
+                </div>
+            </div>
         </SnapSection>
     )
 }
