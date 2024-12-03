@@ -10,6 +10,9 @@ module.exports = {
 	  	boxShadow: {
 			  topButton: "0 0 25px 2px #43BCCD"
 	  	},
+		dropShadow: {
+			'moonstone': '0 0 0.75rem #43BCCD',
+		},
   		colors: {
   			moonstone: '#43BCCD',
   			'this_black': '#1a202c',

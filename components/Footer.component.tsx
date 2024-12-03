@@ -18,12 +18,14 @@ export function Footer() {
           <a
             href="https://www.linkedin.com/in/ciprian-goia-951537197/"
             target="_blank"
+            className='hover:text-moonstone hover:drop-shadow-moonstone'
           >
             <BiLogoLinkedinSquare size={40} />
           </a>
           <a
             href="https://www.linkedin.com/in/ciprian-goia-951537197/"
             target="_blank"
+            className='hover:text-moonstone hover:drop-shadow-moonstone'
           >
             <BiLogoGithub size={40} />
           </a>
@@ -32,12 +34,9 @@ export function Footer() {
           className="flex flex-row gap-[2px] p-[1rem] items-center"
         >
           <p>Powered by</p>
-          <a href="https://vercel.com" target="_blank">
+          <a href="https://vercel.com" className='hover:text-moonstone hover:drop-shadow-moonstone' target="_blank">
             <TbBrandVercel size={25} />
           </a>
-        </div>
-        <div>
-          <p>Disclaimer: Work in progress</p>
         </div>
       </div>
     </SnapSection>

@@ -2,6 +2,7 @@
 
 import { initializeApp } from "firebase/app";
 import {addDoc, collection, getFirestore, getDocs, DocumentData} from "firebase/firestore";
+import {list, getStorage, ref, getDownloadURL} from 'firebase/storage'
 import { Resend } from "resend";
 import {z} from "zod";
 
@@ -18,6 +19,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
+const storage = getStorage(app, process.env.FIREBASE_BUCKET ?? "")
+
 const db = getFirestore(app);
 const collectionName = process.env.COLLECTION_NAME ?? "contact";
 const settingsCollectionName = process.env.SETTINGS_COLLECTION_NAME ?? "settings";
@@ -32,7 +35,7 @@ const resend = new Resend(process.env.RESEND_EMAIL);
 const fromEmail = process.env.FROM_EMAIL ?? "portofolio+local@resend.dev";
 const toEmail = process.env.TO_EMAIL;
 
-type Plm = {
+type FormState = {
   name?: string,
   email?: string,
   message?: string,
@@ -40,8 +43,8 @@ type Plm = {
   email_send?: string,
   success?: boolean,
 }
-export async function sendEmail(state: Plm, data: FormData) {
-  const issues: Plm = {};
+export async function sendEmail(state: FormState, data: FormData) {
+  const issues: FormState = {};
 
   const contactParser = await schema.safeParseAsync({
     email: data.get("email"),
@@ -97,4 +100,17 @@ export async function getWorkStatus() {
   settings.forEach(d => arr.push(d.data()))
 
   return arr[0] as { workStatus: string };
+}
+
+export async function listTechnologies(): Promise<Record<string, number>> {
+  const technologies = await getDocs(collection(db, "technologies"));
+  const arr: DocumentData[] = []
+  technologies.forEach(d => arr.push(d.data()));
+
+  return arr[0];
+}
+
+export async function getDownloadLink(filename: string) {
+  const refStorage = ref(storage, filename);
+  return await getDownloadURL(refStorage)
 }
