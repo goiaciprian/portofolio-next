@@ -33,7 +33,7 @@ export function Modal({
                 headerText={headerText}
                 nodes={nodes}
                 onCloseButton={
-                    <Button>{closeButtonText}</Button>
+                    <Button className='md:text-lg lg:text-lg'>{closeButtonText}</Button>
                 }
                 openButtonText={openButtonText}
             />

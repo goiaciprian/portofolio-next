@@ -19,10 +19,10 @@ export async function Contact() {
                         repeat={Infinity}
                         speed={25}
                     />
-                    <p className="inline-block font-bold">For Hire</p>
+                    <p className="inline-block font-bold md:text-lg lg:text-lg ">For Hire</p>
                 </div>
                 <div>
-                    <p className="italic">
+                    <p className="italic md:text-lg lg:text-lg ">
                         Thanks for checking me out{' '}
                         <span
                             role='img'

@@ -7,7 +7,8 @@ import {
     DialogOverlay,
     DialogTitle,
     DialogClose,
-    DialogTrigger
+    DialogTrigger,
+    DialogDescription
 } from "@/components/ui/dialog";
 import {Button} from "@/components/ui/button";
 
@@ -32,7 +33,7 @@ export function ModalRender({
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button>{openButtonText}</Button>
+                <Button className='md:text-lg lg:text-lg'>{openButtonText}</Button>
             </DialogTrigger>
             <DialogOverlay />
             <DialogContent className="max-w-[85vw] bg-this_black border-this_black" aria-describedby={"mode about me dialog"} >
@@ -42,18 +43,19 @@ export function ModalRender({
                             {headerText}
                         </p>
                     </DialogTitle>
+                    <DialogDescription> </DialogDescription>
                 </DialogHeader>
-                <div className="m-[2vw]">
+                <div className="m-[2vw] max-w-[85vw]">
                     {contentType === 'jsx' ? (
                         nodes
                     ) : (
                         <div>
                             {text.map((txt, index) => (
-                                <a
+                                <p
                                   className="leading-[2] mb-[2rem]"
                                     key={index}>
                                     {txt}
-                                </a>
+                                </p>
                             ))}
                         </div>
                     )}
