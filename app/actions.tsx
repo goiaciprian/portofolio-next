@@ -54,7 +54,8 @@ export async function sendEmail(_state: FormState, data: FormData) {
     token,
     secretKey: process.env.TURNSTILE_SECRET_KEY ?? '',
     idempotencyKey: crypto.randomUUID(),
-    sandbox: process.env.NODE_ENV === 'development'
+    sandbox: process.env.NODE_ENV === 'development',
+    remoteip: 'https://challenges.cloudflare.com/turnstile/v0/siteverify'
   });
 
   console.log(token)
