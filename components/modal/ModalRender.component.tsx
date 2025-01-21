@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/dialog";
 import {Button} from "@/components/ui/button";
 
-type ModalRender = {
+type ModalRenderProps = {
     onCloseButton: React.ReactNode;
     headerText: string;
     contentType: 'jsx' | 'text';
@@ -28,7 +28,7 @@ export function ModalRender({
     text = [],
     onCloseButton,
     openButtonText
-}: ModalRender) {
+}: ModalRenderProps) {
 
     return (
         <Dialog>

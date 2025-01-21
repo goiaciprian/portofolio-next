@@ -1,10 +1,12 @@
 "use server"
 
 import { initializeApp } from "firebase/app";
-import {addDoc, collection, getFirestore, getDocs, DocumentData} from "firebase/firestore";
-import {list, getStorage, ref, getDownloadURL} from 'firebase/storage'
+import { addDoc, collection, getFirestore, getDocs, DocumentData } from "firebase/firestore";
+import { getStorage, ref, getDownloadURL } from 'firebase/storage'
 import { Resend } from "resend";
-import {z} from "zod";
+import { z } from "zod";
+import { validateTurnstileToken } from "next-turnstile";
+import * as crypto from 'crypto';
 
 import { ContactEmail } from "@/components/utils/ContactEmail";
 
@@ -35,16 +37,32 @@ const resend = new Resend(process.env.RESEND_EMAIL);
 const fromEmail = process.env.FROM_EMAIL ?? "portofolio+local@resend.dev";
 const toEmail = process.env.TO_EMAIL;
 
-type FormState = {
+export type FormState = {
   name?: string,
   email?: string,
   message?: string,
   database?: string,
   email_send?: string,
   success?: boolean,
+  token?: string,
 }
-export async function sendEmail(state: FormState, data: FormData) {
+export async function sendEmail(_state: FormState, data: FormData) {
   const issues: FormState = {};
+
+  const token = data.get("cf-turnstile-response") as string ?? '';
+  const validateResponse = await validateTurnstileToken({
+    token,
+    secretKey: process.env.TURNSTILE_SECRET_KEY ?? '',
+    idempotencyKey: crypto.randomUUID(),
+    sandbox: process.env.NODE_ENV === 'development'
+  });
+
+  console.log(validateResponse);
+
+  if (!validateResponse.success) {
+    issues.token = `Failed recaptcha: ${((validateResponse as any)['error-codes'] ?? []).join()}`;
+    return issues;
+  }
 
   const contactParser = await schema.safeParseAsync({
     email: data.get("email"),
@@ -68,7 +86,7 @@ export async function sendEmail(state: FormState, data: FormData) {
       message: contact.content,
       name: contact.name,
     });
-  } catch (e) {
+  } catch (_e) {
     issues['database'] = "Failed to save to database"
   }
 
@@ -82,14 +100,14 @@ export async function sendEmail(state: FormState, data: FormData) {
           from={contact.email}
           name={contact.name}
           content={contact.content}
-  />
-),
-})
-.then((response) => {
-    if (!!response.error) {
-      issues['email'] =  "Failed to send email";
-    }
-  });
+        />
+      ),
+    })
+    .then((response) => {
+      if (!response.error) {
+        issues['email'] = "Failed to send email";
+      }
+    });
 
   return Object.keys(issues).length === 0 ? { success: true } : issues;
 }

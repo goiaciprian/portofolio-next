@@ -31,8 +31,9 @@ html {
 ::-webkit-scrollbar-thumb:hover {
     background: #fff;
 }
+
 @layer base {
-  :root {
+    :root {
         --background: 0 0% 100%;
         --foreground: 240 10% 3.9%;
         --card: 0 0% 100%;
@@ -59,7 +60,8 @@ html {
         --chart-5: 27 87% 67%;
         --radius: 0.5rem;
     }
-  .dark {
+
+    .dark {
         --background: 240 10% 3.9%;
         --foreground: 0 0% 98%;
         --card: 240 10% 3.9%;
@@ -86,11 +88,49 @@ html {
         --chart-5: 340 75% 55%;
     }
 }
+
 @layer base {
-  * {
-    @apply border-border;
+    * {
+        @apply border-border;
     }
-  body {
-    @apply bg-background text-foreground;
+
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+@keyframes typewriter {
+
+    to {
+        content: var(--tw-content);
+        left: 100%;
+    }
+}
+
+@keyframes blink {
+
+    0% {
+        content: var(--tw-content);
+        opacity: 0;
+    }
+
+    0.1% {
+        content: var(--tw-content);
+        opacity: 1;
+    }
+
+    50% {
+        content: var(--tw-content);
+        opacity: 1;
+    }
+
+    50.1% {
+        content: var(--tw-content);
+        opacity: 0;
+    }
+
+    100% {
+        content: var(--tw-content);
+        opacity: 0;
     }
 }
