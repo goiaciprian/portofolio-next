@@ -1,69 +1,108 @@
+const plugin = require("tailwindcss/plugin")
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    darkMode: ["class"],
-    content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
-  theme: {
-  	extend: {
-	  	boxShadow: {
-			  topButton: "0 0 25px 2px #43BCCD"
-	  	},
-		dropShadow: {
-			'moonstone': '0 0 0.75rem #43BCCD',
-		},
-  		colors: {
-  			moonstone: '#43BCCD',
-  			'this_black': '#1a202c',
-  			background: 'hsl(var(--background))',
-  			foreground: 'hsl(var(--foreground))',
-  			card: {
-  				DEFAULT: 'hsl(var(--card))',
-  				foreground: 'hsl(var(--card-foreground))'
-  			},
-  			popover: {
-  				DEFAULT: 'hsl(var(--popover))',
-  				foreground: 'hsl(var(--popover-foreground))'
-  			},
-  			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
-  				foreground: 'hsl(var(--primary-foreground))'
-  			},
-  			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
-  				foreground: 'hsl(var(--secondary-foreground))'
-  			},
-  			muted: {
-  				DEFAULT: 'hsl(var(--muted))',
-  				foreground: 'hsl(var(--muted-foreground))'
-  			},
-  			accent: {
-  				DEFAULT: 'hsl(var(--accent))',
-  				foreground: 'hsl(var(--accent-foreground))'
-  			},
-  			destructive: {
-  				DEFAULT: 'hsl(var(--destructive))',
-  				foreground: 'hsl(var(--destructive-foreground))'
-  			},
-  			border: 'hsl(var(--border))',
-  			input: 'hsl(var(--input))',
-  			ring: 'hsl(var(--ring))',
-  			chart: {
-  				'1': 'hsl(var(--chart-1))',
-  				'2': 'hsl(var(--chart-2))',
-  				'3': 'hsl(var(--chart-3))',
-  				'4': 'hsl(var(--chart-4))',
-  				'5': 'hsl(var(--chart-5))'
-  			}
-  		},
-  		borderRadius: {
-  			lg: 'var(--radius)',
-  			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
-  		}
-  	}
-  },
-  plugins: [require("tailwindcss-animate")],
-}
+	darkMode: ["class"],
+	content: [
+		"./app/**/*.{js,ts,jsx,tsx,mdx}",
+		"./components/**/*.{js,ts,jsx,tsx,mdx}",
+	],
+	theme: {
+		animationSteps: {
+			12: '12',
+			19: '19',
+			4: '4',
+			5: '5',
 
+		},
+		extend: {
+			boxShadow: {
+				topButton: "0 0 25px 2px #43BCCD"
+			},
+			dropShadow: {
+				'moonstone': '0 0 0.75rem #43BCCD',
+			},
+			colors: {
+				moonstone: '#43BCCD',
+				'this_black': '#1a202c',
+				background: 'hsl(var(--background))',
+				foreground: 'hsl(var(--foreground))',
+				card: {
+					DEFAULT: 'hsl(var(--card))',
+					foreground: 'hsl(var(--card-foreground))'
+				},
+				popover: {
+					DEFAULT: 'hsl(var(--popover))',
+					foreground: 'hsl(var(--popover-foreground))'
+				},
+				primary: {
+					DEFAULT: 'hsl(var(--primary))',
+					foreground: 'hsl(var(--primary-foreground))'
+				},
+				secondary: {
+					DEFAULT: 'hsl(var(--secondary))',
+					foreground: 'hsl(var(--secondary-foreground))'
+				},
+				muted: {
+					DEFAULT: 'hsl(var(--muted))',
+					foreground: 'hsl(var(--muted-foreground))'
+				},
+				accent: {
+					DEFAULT: 'hsl(var(--accent))',
+					foreground: 'hsl(var(--accent-foreground))'
+				},
+				destructive: {
+					DEFAULT: 'hsl(var(--destructive))',
+					foreground: 'hsl(var(--destructive-foreground))'
+				},
+				border: 'hsl(var(--border))',
+				input: 'hsl(var(--input))',
+				ring: 'hsl(var(--ring))',
+				chart: {
+					'1': 'hsl(var(--chart-1))',
+					'2': 'hsl(var(--chart-2))',
+					'3': 'hsl(var(--chart-3))',
+					'4': 'hsl(var(--chart-4))',
+					'5': 'hsl(var(--chart-5))'
+				}
+			},
+			borderRadius: {
+				lg: 'var(--radius)',
+				md: 'calc(var(--radius) - 2px)',
+				sm: 'calc(var(--radius) - 4px)'
+			},
+			animation: {
+				typewriter: 'typewriter 2s steps(12) forwards',
+				caret: 'typewriter 2s steps(12) forwards, blink 1s steps(12) infinite 2s',
+			},
+			keyframes: {
+				typewriter: {
+					to: {
+						left: '100%',
+					},
+				},
+				blink: {
+					'0%': {
+						opacity: '0',
+					},
+					'0.1%': {
+						opacity: '1',
+					},
+					'50%': {
+						opacity: '1',
+					},
+					'50.1%': {
+						opacity: '0',
+					},
+					'100%': {
+						opacity: '0',
+					},
+				},
+			}
+		},
+		plugins: [require("tailwindcss-animate"), plugin(({ matchUtilities, theme }) => matchUtilities({
+			'animate2-typewriter': (value) => ({ animation: `typewriter 2s steps(${value}) forwards` }),
+			'animate2-caret': (value) => ({ animation: `typewriter 2s steps(${value}) forwards, blink 1s steps(${value}) infinite 2s` })
+		}, { values: theme('animationSteps') }))],
+	}
+}

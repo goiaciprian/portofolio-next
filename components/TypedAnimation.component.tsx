@@ -1,13 +1,13 @@
-"use client"
-import { TypeAnimation } from 'react-type-animation';
-import styled from '@emotion/styled';
+import React from "react"
 
-export const StyledTypeAnimation = styled(TypeAnimation) <{ italic?: boolean; weight?: number }>`
-  font-weight: ${(props) => (props.weight ? props.weight : 'bold')};
-  font-size: 40px;
-  font-style: ${(props) => (props.italic ? 'italic' : 'normal')};
+type StyledTypeAnimationProps = {
+  text: string;
+  className?: string;
+}
 
-  @media (max-width: 1200px) {
-    font-size: 23px;
-  }
-`;
+export const StyledTypeAnimation = ({
+  text,
+  className = ''
+}: StyledTypeAnimationProps) => {
+  return <h1 className={`relative w-[max-content] font-mono before:absolute before:inset-0 before:animate-typewriter before:bg-this_black after:absolute after:inset-0 after:w-[0.075em] before:h-[55px] after:animate-caret after:bg-white ${className}`}>{text}</h1>
+}

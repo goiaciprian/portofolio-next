@@ -4,24 +4,15 @@ import { StyledTypeAnimation } from "@/components/TypedAnimation.component";
 export function WelcomeSection() {
     return (
         <SnapSection id="welcome">
-            <div className="flex-col">
+            <div className="flex flex-col gap-5">
                 <StyledTypeAnimation
-                    sequence={['Goia Ciprian']}
-                    speed={25}
-                    repeat={0}
-                    cursor={false}
-                    style={{ margin: 'auto' }}
+                    text="Goia Ciprian"
+                    className="font-bold text-7xl"
                 />
-                <div className="flex-row">
-                    <StyledTypeAnimation
-                        italic
-                        weight={400}
-                        sequence={['Fullstack', 2000]}
-                        speed={25}
-                        repeat={Infinity}
-                    />
-                    <StyledTypeAnimation sequence={['Developer']} speed={25} repeat={0} cursor={false} />
-                </div>
+                <StyledTypeAnimation
+                    text="Fullstack Developer"
+                    className="font-normal text-4xl"
+                />
             </div>
             {/* {!!inViewport && !inViewport && <BackTop />} */}
         </SnapSection>

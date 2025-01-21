@@ -1,7 +1,7 @@
 import { SnapSection } from "@/components/SnapSection.component";
 import { StyledTypeAnimation } from "@/components/TypedAnimation.component";
 import { Form } from "@/components/Form.component";
-import {getWorkStatus} from "@/app/actions";
+import { getWorkStatus } from "@/app/actions";
 
 export async function Contact() {
 
@@ -12,12 +12,8 @@ export async function Contact() {
             <div className="flex items-center h-full flex-col gap-[5vh] justify-center">
                 <div>
                     <StyledTypeAnimation
-                        style={{ width: '300px' }}
-                        italic
-                        weight={400}
-                        sequence={[settings.workStatus, 1500]}
-                        repeat={Infinity}
-                        speed={25}
+                        text={settings.workStatus}
+                        className="text-7xl font-bold"
                     />
                     <p className="inline-block font-bold md:text-lg lg:text-lg ">For Hire</p>
                 </div>
