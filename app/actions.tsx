@@ -57,6 +57,7 @@ export async function sendEmail(_state: FormState, data: FormData) {
     sandbox: process.env.NODE_ENV === 'development'
   });
 
+  console.log(token)
   console.log(validateResponse);
 
   if (!validateResponse.success) {
