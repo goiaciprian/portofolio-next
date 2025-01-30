@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 
 import { WelcomeSection } from "@/components/sections/Welcome.section";
 import { AboutMe } from "@/components/sections/AboutMe.section";
