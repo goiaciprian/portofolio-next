@@ -1,7 +1,10 @@
+"use server"
+
 import { SnapSection } from "@/components/SnapSection.component";
 import { StyledTypeAnimation } from "@/components/TypedAnimation.component";
 import { Form } from "@/components/Form.component";
 import {getWorkStatus} from "@/app/actions";
+
 
 export async function Contact() {
     const settings = await getWorkStatus()
@@ -22,9 +25,7 @@ export async function Contact() {
                 </div>
                 <div className="text-center px-4 sm:px-6">
                     <p className="italic text-sm sm:text-base md:text-lg">
-                        Thanks for checking me out{' '}
-                        <span role='img' aria-label='wink-emoji'>😉</span>
-                        . If you want to contact me for some work or feedback now is the time
+                        Thank you for visiting! Feel free to reach out with any work opportunities or feedback using the form below.
                     </p>
                 </div>
                 <div className="w-full px-4 sm:px-[15%] md:px-[20%] lg:px-[30%]">

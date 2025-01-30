@@ -1,3 +1,5 @@
+"use server"
+
 import { SnapSection } from "@/components/SnapSection.component";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,15 +19,27 @@ export async function Projects() {
 
   return (
     <SnapSection id="experience">
-      <div className='flex flex-col gap-5 sm:gap-10 items-center p-4 sm:p-8'>
-        <div className='hidden md:flex flex-row flex-wrap justify-center gap-8 w-full'>
+      <div className='flex flex-col gap-5 sm:gap-10 md:gap-16 lg:gap-20 items-center p-4 sm:p-8 md:p-12 lg:p-16'>
+        <div className='flex flex-row flex-wrap justify-center gap-4 sm:gap-8 md:gap-12 lg:gap-16 w-full'>
           <Link href='https://www.trimble.com/en' target='_blank'>
-            <Image src={'trimble.svg'} alt={"trimble"} width={150} height={150}
-                   style={{width: "auto", height: "auto"}}/>
+            <Image 
+              src={'trimble.svg'} 
+              alt={"trimble"} 
+              width={100} 
+              height={100}
+              className="w-auto h-auto sm:w-[150px] sm:h-[150px] md:w-[175px] md:h-[175px] lg:w-[200px] lg:h-[200px]"
+              style={{width: "auto", height: "auto"}}
+            />
           </Link>
           <Link href='https://www.ensemblesoftware.ro/' target='_blank'>
-            <Image src={'ensemble.svg'} alt={"ensemble-software"} width={150} height={150}
-                   style={{width: "auto", height: "auto"}}/>
+            <Image 
+              src={'ensemble.svg'} 
+              alt={"ensemble-software"} 
+              width={100} 
+              height={100}
+              className="w-auto h-auto sm:w-[150px] sm:h-[150px] md:w-[175px] md:h-[175px] lg:w-[200px] lg:h-[200px]"
+              style={{width: "auto", height: "auto"}}
+            />
           </Link>
         </div>
         <p className='text-xs sm:text-sm md:text-base lg:text-lg px-4 text-center max-w-3xl'>
