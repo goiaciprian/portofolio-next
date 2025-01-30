@@ -22,12 +22,18 @@ export function Form() {
     const [formState, formAction] = useFormState(sendEmail, initialState)
 
     return (
-        <form className="w-full" action={formAction}>
-            <div className="flex flex-col gap-[3vh]">
+        <form className="w-full max-w-lg mx-auto" action={formAction}>
+            <div className="flex flex-col gap-4 sm:gap-[3vh]">
                 <div>
-                    <Label htmlFor="name">Name</Label>
-                    <Input id='name' name="name" type='text' min={5} className="focus:border-moonstone"/>
-                    {formState?.name && <p className="text-red-500 pt-2">{formState.name}</p>}
+                    <Label htmlFor="name" className="text-sm sm:text-base">Name</Label>
+                    <Input 
+                        id='name' 
+                        name="name" 
+                        type='text' 
+                        min={5} 
+                        className="mt-1 text-sm sm:text-base focus:border-moonstone"
+                    />
+                    {formState?.name && <p className="text-red-500 pt-2 text-xs sm:text-sm">{formState.name}</p>}
                 </div>
                 <div>
                     <label htmlFor="email">Email</label>
@@ -53,15 +59,14 @@ export function Form() {
                         {formState.email_send}
                     </AlertDescription>
                 </Alert>}
-                <Button>Submit</Button>
-                {formState?.success && <Alert variant='success' >
-                    <CheckCircle className="h-4 w-4" />
-                    <AlertTitle>Success</AlertTitle>
-                    <AlertDescription>
-                        Email sent successfully
-                    </AlertDescription>
-                </Alert>}
-
+                <Button className="mt-4">Submit</Button>
+                {formState?.success && (
+                    <Alert variant='success' className="mt-4">
+                        <CheckCircle className="h-4 w-4" />
+                        <AlertTitle>Success</AlertTitle>
+                        <AlertDescription>Email sent successfully</AlertDescription>
+                    </Alert>
+                )}
             </div>
         </form>
     )
