@@ -27,6 +27,7 @@ export async function Contact() {
                     <p className="italic text-sm sm:text-base md:text-lg">
                         Thank you for visiting! Feel free to reach out with any work opportunities or feedback using the form below.
                     </p>
+                    <p className="italic text-sm sm:text-base md:text-lg">You can also reach me at <a href="mailto:contact@cipriang-software.work">contact@cipriang-software.work</a></p>
                 </div>
                 <div className="w-full px-4 sm:px-[15%] md:px-[20%] lg:px-[30%]">
                     <Form />
