@@ -4,13 +4,12 @@ import { Form } from "@/components/Form.component";
 import {getWorkStatus} from "@/app/actions";
 
 export async function Contact() {
-
     const settings = await getWorkStatus()
 
     return (
-        <SnapSection id="contact" >
-            <div className="flex items-center h-full flex-col gap-[5vh] justify-center">
-                <div>
+        <SnapSection id="contact">
+            <div className="flex items-center h-full flex-col gap-4 sm:gap-[5vh] justify-center px-4 sm:px-6 md:px-8 w-full max-w-7xl mx-auto">
+                <div className="text-center">
                     <StyledTypeAnimation
                         style={{ width: '300px' }}
                         italic
@@ -19,24 +18,16 @@ export async function Contact() {
                         repeat={Infinity}
                         speed={25}
                     />
-                    <p className="inline-block font-bold md:text-lg lg:text-lg ">For Hire</p>
+                    <p className="inline-block font-bold text-base sm:text-lg md:text-xl">For Hire</p>
                 </div>
-                <div>
-                    <p className="italic md:text-lg lg:text-lg ">
+                <div className="text-center px-4 sm:px-6">
+                    <p className="italic text-sm sm:text-base md:text-lg">
                         Thanks for checking me out{' '}
-                        <span
-                            role='img'
-                            aria-label='wink-emoji'
-                            aria-labelledby='wink-emoji'
-                            style={{
-                                fontStyle: 'normal'
-                            }}>
-                            😉
-                        </span>
+                        <span role='img' aria-label='wink-emoji'>😉</span>
                         . If you want to contact me for some work or feedback now is the time
                     </p>
                 </div>
-                <div className="w-full px-[30%]">
+                <div className="w-full px-4 sm:px-[15%] md:px-[20%] lg:px-[30%]">
                     <Form />
                 </div>
             </div>

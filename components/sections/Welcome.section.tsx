@@ -23,7 +23,6 @@ export function WelcomeSection() {
                     <StyledTypeAnimation sequence={['Developer']} speed={25} repeat={0} cursor={false} />
                 </div>
             </div>
-            {/* {!!inViewport && !inViewport && <BackTop />} */}
         </SnapSection>
     )
 }
