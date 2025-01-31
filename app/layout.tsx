@@ -56,6 +56,9 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
+  },
+  verification: {
+    google: '7CKOEz0WH2QSz7LOuUI8QtvEXxGcEF38XgqI5zkmPJs'
   }
 };
 
