@@ -7,6 +7,8 @@ import {Textarea} from "@/components/ui/textarea";
 import { useFormState } from "react-dom";
 import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert";
 import {AlertCircle, CheckCircle} from "lucide-react";
+import { Turnstile } from '@marsidev/react-turnstile';
+import { useState } from "react";
 
 export function Form() {
 
@@ -20,6 +22,7 @@ export function Form() {
     };
 
     const [formState, formAction] = useFormState(sendEmail, initialState)
+    const [turnstileToken, setTurnstileToken] = useState<string | null>(null)
 
     return (
         <form className="w-full max-w-lg mx-auto" action={formAction}>
@@ -59,7 +62,10 @@ export function Form() {
                         {formState.email_send}
                     </AlertDescription>
                 </Alert>}
-                <Button className="mt-4">Submit</Button>
+                <div className="flex justify-center">
+                    <Turnstile siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITEKEY!} onSuccess={setTurnstileToken} />
+                </div>
+                <Button className="mt-4" type="submit" disabled={!turnstileToken}>Submit</Button>
                 {formState?.success && (
                     <Alert variant='success' className="mt-4">
                         <CheckCircle className="h-4 w-4" />
