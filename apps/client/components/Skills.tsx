@@ -3,30 +3,30 @@ import { InfoIcon, X } from "lucide-react";
 export const Skills = () => {
   return (
     <div>
-      <h3 className="text-4xl font-bold">
+      <h3 className="text-2xl lg:text-4xl font-bold">
         Skills
         <button
           popoverTarget="details-popover"
           className="cursor-pointer ml-2 align-middle"
         >
-          <InfoIcon className="text-business-moonstone size-6" />
+          <InfoIcon className="text-business-moonstone size-5 lg:size-6" />
         </button>
       </h3>
-      <div className="py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-3 gap-y-5">
+      <div className="py-4 lg:py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-3 gap-y-5">
         {arr.map((item) => {
           return (
             <div
               key={item}
               className="px-4 py-2 rounded-2xl bg-business-moonstone/20 flex justify-center shadow hover:shadow-moonstone select-none"
             >
-              <h5 className="text-xl font-semibold">{item}</h5>
+              <h5 className="lg:text-xl font-semibold">{item}</h5>
             </div>
           );
         })}
       </div>
       <div className="relative list-outside">
         <details className="details-skills">
-          <summary className="select-none text-xl cursor-pointer">
+          <summary className="select-none lg:text-xl cursor-pointer">
             <span className="align-middle">More</span>
           </summary>
 
@@ -38,7 +38,7 @@ export const Skills = () => {
                     key={item}
                     className="px-4 py-2 rounded-2xl bg-business-moonstone/20 flex justify-center shadow hover:shadow-moonstone select-none"
                   >
-                    <h5 className="text-xl font-semibold">{item}</h5>
+                    <h5 className="lg:text-xl font-semibold">{item}</h5>
                   </div>
                 );
               })}

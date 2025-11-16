@@ -6,16 +6,16 @@ import { Contact } from "client/components/Contact";
 export default function Page() {
   return (
     <>
-      <main className="grid place-items-center py-50 h-full">
-        <div className="flex gap-25 max-w-3/4">
+      <main className="grid place-items-center py-25 lg:py-50 h-full">
+        <div className="flex gap-15 lg:gap-25 max-w-3/4">
           <div className="items-end w-2/4">
-            <h1 className="text-6xl font-bold flex flex-col items-end">
+            <h1 className="text-4xl lg:text-6xl font-bold flex flex-col items-end">
               <span>{"Hi, I'm"}</span>
               <span className="text-business-moonstone font-extrabold text-end">
                 Goia Ciprian
               </span>
             </h1>
-            <div className="py-8 place-items-end">
+            <div className="py-4 lg:py-8 place-items-end">
               <div>
                 <InfoPin iconName="code" text="Software Engineer" />
                 <InfoPin iconName="map-pin" text="Based in Romania" />
@@ -26,7 +26,7 @@ export default function Page() {
               </div>
             </div>
             <div className="place-items-end pb-3">
-              <p className="font-semibold text-3xl max-w-110 text-end">
+              <p className="font-semibold text-xl lg:text-3xl max-w-110 text-end">
                 Passionate about programming for over{" "}
                 {new Date().getFullYear() - 2020} years.
               </p>
@@ -37,7 +37,7 @@ export default function Page() {
                   <Button
                     text="Preview CV"
                     as="a"
-                    href="/cv.pdf"
+                    href="/Ciprian_Goia_Fullstack_Engineer_CV.pdf"
                     icon="file"
                     variant="secondary"
                     target="_blank"
