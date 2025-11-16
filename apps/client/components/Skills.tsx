@@ -59,7 +59,7 @@ export const Skills = () => {
               <X className="text-white" size="25" />
             </div>
           </button>
-          <div className="m-4 top-[40vh] right-8 text-white bg-business-black-100 absolute h-60 rounded-2xl px-10">
+          <div className="m-4 top-[30vh] lg:top-[40vh] right-8 text-white bg-business-black-100 absolute h-60 rounded-2xl px-10">
             <div className="flex flex-col justify-center h-full">
               <h3 className="text-xl lg:text-3xl font-semibold block">Informations</h3>
               <p className="leading-8 lg:leading-10 lg:text-2xl mt-2 max-w-dvw block">
