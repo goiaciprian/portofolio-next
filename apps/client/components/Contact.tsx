@@ -3,7 +3,7 @@ import { BiLogoGithub, BiLogoLinkedinSquare } from "react-icons/bi";
 export const Contact = () => {
   return (
     <div className="pt-8">
-      <h3 className="text-4xl font-bold">Socials</h3>
+      <h3 className="text-2xl lg:text-4xl font-bold">Socials</h3>
       <div className="flex flex-col md:flex-row w-full items-center gap-5 mt-5">
         <a
           href="https://github.com/goiaciprian"
@@ -11,7 +11,7 @@ export const Contact = () => {
           rel="noreferrer"
           className="cursor-pointer hover:text-business-moonstone hover:drop-shadow-moonstone"
         >
-          <BiLogoGithub className="size-14" />
+          <BiLogoGithub className="size-10 lg:size-14" />
         </a>
         <a
           href="https://www.linkedin.com/in/ciprian-goia-951537197/"
@@ -19,7 +19,7 @@ export const Contact = () => {
           target="_blank"
           className="cursor-pointer hover:text-business-moonstone hover:drop-shadow-moonstone"
         >
-          <BiLogoLinkedinSquare className="size-14" />
+          <BiLogoLinkedinSquare className="size-10 lg:size-14" />
         </a>
       </div>
     </div>

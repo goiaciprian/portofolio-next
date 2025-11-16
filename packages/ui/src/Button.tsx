@@ -32,13 +32,13 @@ export function Button({
 }: ButtonProps) {
   const styles = {
     secondary: {
-      base: "ui:flex ui:items-center ui:justify-center ui:gap-2 ui:text-2xl ui:font-semibold ui:border-2 ui:px-4 ui:py-2 ui:rounded-md ui:border-business-moonstone/50 ui:cursor-pointer ui:min-w-46 ui:hover:shadow-moonstone",
-      icon: "ui:text-business-moonstone/50",
+      base: "ui:flex ui:items-center ui:justify-center ui:gap-2 ui:lg:text-2xl ui:font-semibold ui:border-2 ui:px-4 ui:py-2 ui:rounded-md ui:border-business-moonstone/50 ui:cursor-pointer ui:min-w-46 ui:hover:shadow-moonstone",
+      icon: "ui:size-6 ui:lg:size-8 ui:text-business-moonstone/50",
       span: "ui:w-max",
     },
     primary: {
-      base: "ui:flex ui:items-center ui:justify-center ui:gap-2 ui:text-2xl ui:font-semibold ui:px-4 ui:py-2 ui:rounded-md ui:text-business-black ui:bg-business-moonstone ui:min-w-45 ui:hover:border-business-moonstone/50 ui:border-2 ui:hover:text-white ui:hover:bg-transparent ui:hover:shadow-moonstone ui:group/a-button",
-      icon: "ui:text-business-black ui:group-hover/a-button:text-business-moonstone/50",
+      base: "ui:flex ui:items-center ui:justify-center ui:gap-2 ui:lg:text-2xl ui:font-semibold ui:px-4 ui:py-2 ui:rounded-md ui:text-business-black ui:bg-business-moonstone ui:min-w-45 ui:hover:border-business-moonstone/50 ui:border-2 ui:hover:text-white ui:hover:bg-transparent ui:hover:shadow-moonstone ui:group/a-button",
+      icon: "ui:size-6 ui:lg:size-8 ui:text-business-black ui:group-hover/a-button:text-business-moonstone/50",
       span: "ui:w-max",
     },
   };
@@ -54,7 +54,6 @@ export function Button({
           {icon && (
             <DynamicIcon
               name={icon}
-              size={22}
               className={`${styles[variant].icon}`}
             />
           )}
@@ -70,7 +69,6 @@ export function Button({
           {icon && (
             <DynamicIcon
               name={icon}
-              size={22}
               className={`${styles[variant].icon}`}
             />
           )}

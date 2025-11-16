@@ -3,30 +3,30 @@ import { InfoIcon, X } from "lucide-react";
 export const Skills = () => {
   return (
     <div>
-      <h3 className="text-4xl font-bold">
+      <h3 className="text-2xl lg:text-4xl font-bold">
         Skills
         <button
           popoverTarget="details-popover"
           className="cursor-pointer ml-2 align-middle"
         >
-          <InfoIcon className="text-business-moonstone size-6" />
+          <InfoIcon className="text-business-moonstone size-5 lg:size-6" />
         </button>
       </h3>
-      <div className="py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-3 gap-y-5">
+      <div className="py-4 lg:py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-3 gap-y-5">
         {arr.map((item) => {
           return (
             <div
               key={item}
               className="px-4 py-2 rounded-2xl bg-business-moonstone/20 flex justify-center shadow hover:shadow-moonstone select-none"
             >
-              <h5 className="text-xl font-semibold">{item}</h5>
+              <h5 className="lg:text-xl font-semibold">{item}</h5>
             </div>
           );
         })}
       </div>
       <div className="relative list-outside">
         <details className="details-skills">
-          <summary className="select-none text-xl cursor-pointer">
+          <summary className="select-none lg:text-xl cursor-pointer">
             <span className="align-middle">More</span>
           </summary>
 
@@ -38,7 +38,7 @@ export const Skills = () => {
                     key={item}
                     className="px-4 py-2 rounded-2xl bg-business-moonstone/20 flex justify-center shadow hover:shadow-moonstone select-none"
                   >
-                    <h5 className="text-xl font-semibold">{item}</h5>
+                    <h5 className="lg:text-xl font-semibold">{item}</h5>
                   </div>
                 );
               })}
@@ -59,10 +59,10 @@ export const Skills = () => {
               <X className="text-white" size="25" />
             </div>
           </button>
-          <div className="m-4 top-[40vh] right-8 text-white bg-business-black-100 absolute h-60 rounded-2xl px-10">
+          <div className="m-4 top-[30vh] lg:top-[40vh] right-8 text-white bg-business-black-100 absolute h-60 rounded-2xl px-10">
             <div className="flex flex-col justify-center h-full">
-              <h3 className="text-3xl font-semibold block">Informations</h3>
-              <p className="leading-10 text-2xl mt-2 max-w-dvw block">
+              <h3 className="text-xl lg:text-3xl font-semibold block">Informations</h3>
+              <p className="leading-8 lg:leading-10 lg:text-2xl mt-2 max-w-dvw block">
                 The skills already displayed are the ones I use daily at my
                 current position.
                 <br />
