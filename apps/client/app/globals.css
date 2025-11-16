@@ -1,0 +1,36 @@
+@import "tailwindcss";
+@import "@portofolio/tailwind-config";
+
+:root {
+  interpolate-size: allow-keywords;
+}
+
+body {
+  background: var(--color-business-black);
+  color: var(--color-white);
+}
+
+@theme {
+  --animate-appear: appear 300ms;
+  --animate-vanish: vanish 500ms;
+
+  @keyframes appear {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes vanish {
+    100% {
+      opacity: 0;
+      display: none;
+    }
+    0% {
+      opacity: 1;
+      display: block;
+    }
+  }
+}

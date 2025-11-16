@@ -1,0 +1,22 @@
+/* Component-level styles for the UI package */
+@import "tailwindcss" prefix(ui);
+@import "@portofolio/tailwind-config";
+
+@layer components {
+  .details-skills {
+    overflow: hidden;
+  }
+
+  .details-skills::details-content {
+    transition-behavior: allow-discrete !important;
+
+    block-size: 0;
+    transition:
+      block-size 500ms,
+      content-visibility 500ms;
+  }
+
+  .details-skills[open]::details-content {
+    block-size: auto;
+  }
+}
