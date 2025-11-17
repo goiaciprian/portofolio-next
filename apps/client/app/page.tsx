@@ -98,7 +98,7 @@ export default function Page() {
         </div>
         <div className="max-w-fit lg:place-self-start">
           <div className="flex flex-col gap-5">
-            <div className="place-items-center lg:place-items-start">cd 
+            <div className="place-items-center lg:place-items-start">
               <Link
                 href="https://www.trimble.com/en"
                 rel="noreferrer"
