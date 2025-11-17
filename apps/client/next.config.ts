@@ -5,7 +5,12 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    remotePatterns: [new URL("https://cdn.simpleicons.org/**")]
+    remotePatterns: [new URL("https://cdn.simpleicons.org/**"), {
+      protocol: 'https',
+      hostname: 'doodleipsum.com',
+      port: '',
+      pathname: '/**'
+    }]
   },
   async rewrites() {
     return [

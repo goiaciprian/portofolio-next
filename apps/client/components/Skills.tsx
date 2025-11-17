@@ -30,7 +30,7 @@ export const Skills = () => {
             <span className="align-middle">More</span>
           </summary>
 
-          <div className="pt-5">
+          <div className="pt-5 pb-3">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-3 gap-y-5">
               {arrLess.map((item) => {
                 return (
@@ -63,15 +63,14 @@ export const Skills = () => {
             <div className="flex flex-col justify-center h-full">
               <h3 className="text-xl lg:text-3xl font-semibold block">Informations</h3>
               <p className="leading-8 lg:leading-10 lg:text-2xl mt-2 max-w-dvw block">
-                The skills already displayed are the ones I use daily at my
-                current position.
+                The skills shown above are ones I use daily in my current role
                 <br />
-                The ones under{" "}
+                Those under{" "}
                 <span className="text-business-moonstone font-bold italic">
                   More
                 </span>{" "}
-                are skills that I&apos;ve worked on previous jobs or on my
-                personal project.
+                are skills I&apos;ve worked with in previous positions or personal projects.are skills that I&apos;ve worked with on previous jobs or on my
+                personal projects.
               </p>
             </div>
           </div>

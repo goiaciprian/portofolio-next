@@ -3,6 +3,7 @@ import { Skills } from "client/components/Skills";
 import { Button } from "@portofolio/ui/Button";
 import { Contact } from "client/components/Contact";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Page() {
   return (
@@ -74,12 +75,19 @@ export default function Page() {
         <div className="max-w-fit lg:place-self-end">
           <div className="flex flex-col gap-5">
             <div className="place-items-center lg:place-items-end">
-              <Image
-                src="/ensemble.svg"
-                width="155"
-                height="200"
-                alt="ensemble"
-              />
+              <Link
+                href="https://www.ensemblesoftware.ro/"
+                rel="noreferrer"
+                target="_blank"
+                className="block hover:drop-shadow-moonstone"
+              >
+                <Image
+                  src="/ensemble.svg"
+                  width="155"
+                  height="200"
+                  alt="ensemble"
+                />
+              </Link>
             </div>
             <p className="font-semibold lg:text-xl max-w-100">
               Maintenance and development of new features with a focus on
@@ -90,13 +98,20 @@ export default function Page() {
         </div>
         <div className="max-w-fit lg:place-self-start">
           <div className="flex flex-col gap-5">
-            <div className="place-items-center lg:place-items-start">
-              <Image
-                src="/trimble.svg"
-                width="135"
-                height="200"
-                alt="ensemble"
-              />
+            <div className="place-items-center lg:place-items-start">cd 
+              <Link
+                href="https://www.trimble.com/en"
+                rel="noreferrer"
+                target="_blank"
+                className="block hover:drop-shadow-moonstone"
+              >
+                <Image
+                  src="/trimble.svg"
+                  width="135"
+                  height="200"
+                  alt="ensemble"
+                />
+              </Link>
             </div>
             <p className="font-semibold lg:text-xl max-w-100">
               Prioritizing the implementation of new features and testing them
