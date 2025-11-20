@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@portofolio/ui": "workspace:*",
+    "@portofolio/firestore": "workspace:*",
     "lucide-react": "^0.553.0",
     "next": "^16.0.1",
     "posthog-js": "^1.293.0",
