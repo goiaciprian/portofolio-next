@@ -1,7 +1,10 @@
 import { Button } from "@portofolio/ui/Button";
 import { getCVUrl } from "@portofolio/internal/client";
+import { connection } from "next/server";
 
-export const PreviewCVButton = async () => {
+export default async function PreviewCVButton() {
+  "use server";
+  await connection();
   const cvLink = await getCVUrl();
   return (
     <Button
@@ -13,4 +16,4 @@ export const PreviewCVButton = async () => {
       target="_blank"
     />
   );
-};
+}

@@ -1,7 +1,8 @@
 import { InfoIcon, X } from "lucide-react";
 import { getSkills } from "@portofolio/internal/client";
 
-export const Skills = async () => {
+export default async function Skills() {
+  "use server";
   const skills = await getSkills();
 
   return (
@@ -85,4 +86,4 @@ export const Skills = async () => {
       </div>
     </div>
   );
-};
+}

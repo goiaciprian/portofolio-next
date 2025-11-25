@@ -1,13 +1,14 @@
 import { InfoPin } from "@portofolio/ui/InfoPin";
-import { Skills } from "client/components/Skills";
+import Skills from "client/components/Skills";
 import { Button } from "@portofolio/ui/Button";
 import { Contact } from "client/components/Contact";
 import { Suspense } from "react";
-import { PreviewCVButton } from "client/components/PreviewCV";
-import { Experience } from "client/components/Experience";
+import PreviewCVButton from "client/components/PreviewCV";
+import Experience from "client/components/Experience";
 import { Loader } from "@portofolio/ui/Loader";
 
-export default function Page() {
+export default async function Page() {
+  "use server";
   return (
     <main className="px-10 py-25 lg:py-50 h-full">
       <section className="grid gap-x-10 gap-y-10 grid-cols-[2fr_1fr] md:grid-cols-2 ">
@@ -23,16 +24,12 @@ export default function Page() {
               <div>
                 <InfoPin iconName="code" text="Software Engineer" />
                 <InfoPin iconName="map-pin" text="Based in Romania" />
-                <InfoPin
-                  iconName="calendar"
-                  text={`${new Date().getFullYear() - 2021}+ years of experience`}
-                />
+                <InfoPin iconName="calendar" text={`4+ years of experience`} />
               </div>
             </div>
             <div className="place-items-end pb-3">
               <p className="font-semibold text-xl lg:text-3xl max-w-110 text-end">
-                Passionate about programming for over{" "}
-                {new Date().getFullYear() - 2020} years.
+                Passionate about programming for over 6 years.
               </p>
             </div>
             <div className="place-items-end pt-5">

@@ -2,7 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { getProjects } from "@portofolio/internal/client";
 
-export const Experience = async () => {
+export default async function Experience() {
+  "use server";
   const projects = await getProjects();
 
   return (
@@ -60,4 +61,4 @@ export const Experience = async () => {
       ))}
     </>
   );
-};
+}
