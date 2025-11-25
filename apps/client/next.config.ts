@@ -30,6 +30,9 @@ const nextConfig: NextConfig = {
   // This is required to support PostHog trailing slash API requests
   skipTrailingSlashRedirect: true,
   cacheComponents: true,
+  outputFileTracingIncludes: {
+    "/*": ["./node_modules/.prisma/client/**/*"],
+  },
 };
 
 export default nextConfig;
