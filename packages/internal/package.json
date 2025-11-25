@@ -1,0 +1,34 @@
+{
+  "name": "@portofolio/internal",
+  "version": "0.0.0",
+  "files": [
+    "dist"
+  ],
+  "license": "MIT",
+  "exports": {
+    "./client": {
+      "types": "./dist/src/client.d.ts",
+      "default": "./dist/src/client.js"
+    }
+  },
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc",
+    "seed": "node --import=tsx --env-file=.env src/seed.ts"
+  },
+  "devDependencies": {
+    "@portofolio/eslint-config": "workspace:*",
+    "@portofolio/typescript-config": "workspace:*",
+    "@types/node": "^22.18.12",
+    "eslint": "^9.39.1",
+    "prisma": "^6.19.0",
+    "tsx": "^4.20.6",
+    "typescript": "5.9.2"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.19.0",
+    "@vercel/blob": "^2.0.0",
+    "dotenv": "^17.2.3",
+    "mongodb": "^7.0.0"
+  }
+}

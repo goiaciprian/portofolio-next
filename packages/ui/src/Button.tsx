@@ -1,3 +1,4 @@
+import { LoaderCircle } from "lucide-react";
 import { DynamicIcon, IconName } from "lucide-react/dynamic";
 import React, { MouseEventHandler } from "react";
 
@@ -6,6 +7,8 @@ type ButtonProps = {
   variant?: "secondary" | "primary";
   icon?: IconName;
   className?: string;
+  disabled?: boolean;
+  loading?: boolean;
 } & (
   | {
       as?: "button";
@@ -29,6 +32,8 @@ export function Button({
   target,
   href,
   onClick,
+  disabled = false,
+  loading = false,
 }: ButtonProps) {
   const styles = {
     secondary: {
@@ -50,12 +55,14 @@ export function Button({
           target={target}
           className={`${styles[variant].base} ${className}`}
           rel="noreferrer"
+          aria-disabled={disabled || loading}
+          inert={disabled || loading}
         >
-          {icon && (
-            <DynamicIcon
-              name={icon}
-              className={`${styles[variant].icon}`}
-            />
+          {icon && !loading && (
+            <DynamicIcon name={icon} className={`${styles[variant].icon}`} />
+          )}
+          {loading && (
+            <LoaderCircle className="ui:animate-spin ui:text-business-moonstone" />
           )}
           <span className={`${styles[variant].span}`}>{text}</span>
         </a>
@@ -65,12 +72,13 @@ export function Button({
         <button
           onClick={onClick}
           className={`${styles[variant].base} ${className}`}
+          disabled={disabled || loading}
         >
-          {icon && (
-            <DynamicIcon
-              name={icon}
-              className={`${styles[variant].icon}`}
-            />
+          {icon && !loading && (
+            <DynamicIcon name={icon} className={`${styles[variant].icon}`} />
+          )}
+          {loading && (
+            <LoaderCircle className="ui:animate-spin ui:text-business-moonstone" />
           )}
           <span className={`${styles[variant].span}`}>{text}</span>
         </button>

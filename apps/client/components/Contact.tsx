@@ -10,6 +10,7 @@ export const Contact = () => {
           target="_blank"
           rel="noreferrer"
           className="cursor-pointer hover:text-business-moonstone hover:drop-shadow-moonstone"
+          aria-label="go to github"
         >
           <BiLogoGithub className="size-10 lg:size-14" />
         </a>
@@ -18,6 +19,7 @@ export const Contact = () => {
           rel="noreferrer"
           target="_blank"
           className="cursor-pointer hover:text-business-moonstone hover:drop-shadow-moonstone"
+          aria-label="go to linkedin"
         >
           <BiLogoLinkedinSquare className="size-10 lg:size-14" />
         </a>

@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("MONGODB_URI")
+}
+
+enum SkillType {
+  OTHER
+  MAIN
+}
+
+model Skill {
+  id   String    @id @default(auto()) @map("_id") @db.ObjectId
+  name String    @unique
+  type SkillType
+
+  @@map("skill")
+}
+
+type ProjectSide {
+  description String
+  image       String
+}
+
+model Project {
+  id    String      @id @default(auto()) @map("_id") @db.ObjectId
+  left  ProjectSide
+  right ProjectSide
+
+  @@map("project")
+}

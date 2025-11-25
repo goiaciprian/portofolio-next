@@ -4,14 +4,14 @@ import {
   getDocs,
   getFirestore,
   limit,
+  orderBy,
   query,
+  where,
+  documentId,
 } from "firebase/firestore";
 import { getDownloadURL, getStorage, ref } from "firebase/storage";
-
-export type SkillsDB = {
-  main: string[];
-  other: string[];
-};
+import { Project, SkillsDB } from "./types";
+import { projectsConvertor, skillsDBConvertor } from "./utils";
 
 const app = initializeApp({
   apiKey: process.env.API_KEY,
@@ -22,16 +22,25 @@ const app = initializeApp({
   appId: process.env.APP_ID,
 });
 
+const target = process.env.TARGET;
+
 const storage = getStorage(app, process.env.FIREBASE_BUCKET ?? "");
 const db = getFirestore(app);
 
+const _downloadUrl = async (filename: string) => {
+  const refStorage = ref(storage, filename);
+  return await getDownloadURL(refStorage);
+};
+
 export const getSkills = async (): Promise<SkillsDB> => {
-  const collectionRef = collection(db, "skills");
-  const snapshot = await getDocs(query(collectionRef, limit(1)));
+  const collectionRef = collection(db, "skills").withConverter(
+    skillsDBConvertor
+  );
+  const snapshot = await getDocs(
+    query(collectionRef, where(documentId(), "==", target), limit(1))
+  );
 
   const doc = snapshot.docs[0]!.data();
-
-  await new Promise((resolve) => setTimeout(resolve, 5000));
 
   return {
     main: doc.main,
@@ -39,8 +48,32 @@ export const getSkills = async (): Promise<SkillsDB> => {
   };
 };
 
-
 export const getDownloadLink = async () => {
-  const refStorage = ref(storage, "Goia_Ciprian_Software_Engineer_CV.pdf");
-  return await getDownloadURL(refStorage)
-}
+  return await _downloadUrl("Goia_Ciprian_Software_Engineer_CV.pdf");
+};
+
+export const getExperience = async (): Promise<[Project, Project]> => {
+  const colletionRef = collection(db, "projects").withConverter(
+    projectsConvertor
+  );
+  const snapshot = await getDocs(
+    query(colletionRef, orderBy("order", "asc"), limit(2))
+  );
+
+  const docs = await Promise.all(
+    snapshot.docs.map(async (doc) => {
+      const data = doc.data();
+      const imageLink: string = await _downloadUrl(data.image);
+      return {
+        description: data.description as string,
+        imageLink: imageLink as string,
+      };
+    })
+  );
+  return [
+    { description: docs[0]!.description, imageLink: docs[0]!.imageLink },
+    { description: docs[1]!.description, imageLink: docs[1]!.imageLink },
+  ];
+};
+
+export type { SkillsDB, Project };

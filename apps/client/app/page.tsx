@@ -2,8 +2,10 @@ import { InfoPin } from "@portofolio/ui/InfoPin";
 import { Skills } from "client/components/Skills";
 import { Button } from "@portofolio/ui/Button";
 import { Contact } from "client/components/Contact";
-import Image from "next/image";
-import Link from "next/link";
+import { Suspense } from "react";
+import { PreviewCVButton } from "client/components/PreviewCV";
+import { Experience } from "client/components/Experience";
+import { Loader } from "@portofolio/ui/Loader";
 
 export default function Page() {
   return (
@@ -36,14 +38,21 @@ export default function Page() {
             <div className="place-items-end pt-5">
               <div className="flex gap-3 flex-wrap justify-end">
                 <div>
-                  <Button
-                    text="Preview CV"
-                    as="a"
-                    href="/Ciprian_Goia_Fullstack_Engineer_CV.pdf"
-                    icon="file"
-                    variant="secondary"
-                    target="_blank"
-                  />
+                  <Suspense
+                    fallback={
+                      <Button
+                        text="Preview CV"
+                        as="a"
+                        href=""
+                        loading
+                        icon="file"
+                        variant="secondary"
+                        target="_blank"
+                      />
+                    }
+                  >
+                    <PreviewCVButton />
+                  </Suspense>
                 </div>
                 <div>
                   <Button
@@ -64,62 +73,24 @@ export default function Page() {
           </div>
         </div>
         <div className="w-fit pt-1">
-          <Skills />
+          <Suspense fallback={<Loader className="size-10" />}>
+            <Skills />
+          </Suspense>
           <Contact />
         </div>
       </section>
       <div className="lg:hidden place-self-center">
         <h1 className="text-3xl font-bold">Experience</h1>
       </div>
-      <section className="grid place-items-center grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-10 mt-10">
-        <div className="max-w-fit lg:place-self-end">
-          <div className="flex flex-col gap-5">
-            <div className="place-items-center lg:place-items-end">
-              <Link
-                href="https://www.ensemblesoftware.ro/"
-                rel="noreferrer"
-                target="_blank"
-                className="block hover:drop-shadow-moonstone"
-              >
-                <Image
-                  src="/ensemble.svg"
-                  width="155"
-                  height="200"
-                  alt="ensemble"
-                />
-              </Link>
-            </div>
-            <p className="font-semibold lg:text-xl max-w-100">
-              Maintenance and development of new features with a focus on
-              performance and scalability. Predominantly working with ReactJS,
-              NestJS, and AWS services.
-            </p>
-          </div>
-        </div>
-        <div className="max-w-fit lg:place-self-start">
-          <div className="flex flex-col gap-5">
-            <div className="place-items-center lg:place-items-start">
-              <Link
-                href="https://www.trimble.com/en"
-                rel="noreferrer"
-                target="_blank"
-                className="block hover:drop-shadow-moonstone"
-              >
-                <Image
-                  src="/trimble.svg"
-                  width="135"
-                  height="200"
-                  alt="ensemble"
-                />
-              </Link>
-            </div>
-            <p className="font-semibold lg:text-xl max-w-100">
-              Prioritizing the implementation of new features and testing them
-              using technologies such as Angular and .NET Core.
-            </p>
-          </div>
-        </div>
-      </section>
+      <Suspense
+        fallback={
+          <section className="grid place-items-center pt-15">
+            <Loader className="size-12" />
+          </section>
+        }
+      >
+        <Experience />
+      </Suspense>
     </main>
   );
 }
