@@ -1,41 +1,22 @@
-import { Project, Skills } from "./client.types";
-import { prisma } from "./prisma.service";
-import { getFileUrl } from "./utils";
+import { PrismaPg } from "@prisma/adapter-pg";
+import { PrismaClient } from "../generated/prisma/client";
 
-export const getCVUrl = async () => {
-  const cv = await getFileUrl("Ciprian_Goia_Fullstack_Engineer_CV.pdf");
-  if (!cv) {
-    return "";
-  }
-  return cv.url;
-};
+const adapter = new PrismaPg({
+  connectionString: process.env.DATABASE_URL,
+});
 
-export const getSkills = async (): Promise<Skills> => {
-  const skillsRaw = await prisma.skill.findMany();
-  return skillsRaw.reduce(
-    (final, current) => {
-      if (current.type === "MAIN") {
-        final.main.push(current.name);
-      } else {
-        final.other.push(current.name);
-      }
-      return final;
-    },
-    {
-      main: [] as string[],
-      other: [] as string[],
-    }
-  );
-};
+const globalForPrisma = global as unknown as { prisma: PrismaClient };
 
-export const getProjects = async (): Promise<Project[]> => {
-  const data = await prisma.project.findMany({
-    select: {
-      left: true,
-      right: true,
-    },
+export const prisma =
+  globalForPrisma.prisma ||
+  new PrismaClient({
+    adapter,
   });
-  return data;
-};
 
-export * from "./client.types";
+if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
+
+export {
+  type Project,
+  type Skill,
+  SkillType,
+} from "../generated/prisma/client";

@@ -1,9 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
-import { getProjects } from "@portofolio/internal/client";
+import { getProjects } from "../../../packages/internal/dist/ui";
 import { connection } from "next/server";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default async function Experience() {
   await connection();

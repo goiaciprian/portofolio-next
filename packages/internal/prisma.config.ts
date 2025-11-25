@@ -5,9 +5,9 @@ export default defineConfig({
   schema: "prisma/schema.prisma",
   migrations: {
     path: "prisma/migrations",
+    seed: "./prisma/seed.ts"
   },
-  engine: "classic",
   datasource: {
-    url: env("MONGODB_URI"),
+    url: env("DATABASE_URL"),
   },
 });

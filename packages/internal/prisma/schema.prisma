@@ -1,11 +1,10 @@
 generator client {
-  provider   = "prisma-client"
-  output     = "../generated/prisma"
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
 }
 
 datasource db {
-  provider = "mongodb"
-  url      = env("MONGODB_URI")
+  provider = "postgresql"
 }
 
 enum SkillType {
@@ -14,22 +13,18 @@ enum SkillType {
 }
 
 model Skill {
-  id   String    @id @default(auto()) @map("_id") @db.ObjectId
+  id   String    @id @default(uuid())
   name String    @unique
   type SkillType
 
   @@map("skill")
 }
 
-type ProjectSide {
-  description String
-  image       String
-}
-
 model Project {
-  id    String      @id @default(auto()) @map("_id") @db.ObjectId
-  left  ProjectSide
-  right ProjectSide
+  id String @id @default(uuid())
+
+  left  Json?
+  right Json?
 
   @@map("project")
 }

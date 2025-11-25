@@ -1,4 +1,4 @@
-import { prisma, SkillType } from "./prisma.service";
+import { prisma, SkillType } from "./client";
 import { getFileUrl } from "./utils";
 
 async function main() {
@@ -51,23 +51,21 @@ async function main() {
       prisma.project.create({
         data: {
           left: {
-            set: {
-              description: project.left.description,
-              image: project.left.image,
-            },
+            description: project.left.description,
+            image: project.left.image,
           },
           right: {
-            set: {
-              description: project.right.description,
-              image: project.right.image,
-            },
+            description: project.right.description,
+            image: project.right.image,
           },
         },
       })
     )
   );
 
-  console.info("Done...");
+  console.info("Done");
 }
 
-main();
+main().finally(async () => {
+  await prisma.$disconnect();
+});
