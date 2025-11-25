@@ -1,8 +1,11 @@
 import { InfoIcon, X } from "lucide-react";
 import { getSkills } from "@portofolio/internal/client";
+import { connection } from "next/server";
+
+export const dynamic = 'force-dynamic';
 
 export default async function Skills() {
-  "use server";
+  await connection();
   const skills = await getSkills();
 
   return (
