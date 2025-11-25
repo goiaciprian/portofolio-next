@@ -14,6 +14,7 @@
   "scripts": {
     "dev": "tsc --watch",
     "build": "tsc",
+    "prebuild": "prisma generate",
     "seed": "node --import=tsx --env-file=.env src/seed.ts"
   },
   "devDependencies": {
