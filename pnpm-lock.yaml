@@ -199,9 +199,6 @@ importers:
       dotenv:
         specifier: ^17.2.3
         version: 17.2.3
-      mongodb:
-        specifier: ^7.0.0
-        version: 7.0.0
     devDependencies:
       '@portofolio/eslint-config':
         specifier: workspace:*

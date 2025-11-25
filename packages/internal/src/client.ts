@@ -1,7 +1,6 @@
 import { Project, Skills } from "./client.types";
 import { prisma } from "./prisma.service";
 import { getFileUrl } from "./utils";
-import "./mongodb";
 
 export const getCVUrl = async () => {
   const cv = await getFileUrl("Ciprian_Goia_Fullstack_Engineer_CV.pdf");
