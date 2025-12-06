@@ -32,7 +32,7 @@ async function main() {
       ...skills.other.map((skill) => ({ name: skill, type: SkillType.OTHER })),
     ].map((obj) =>
       prisma.skill.upsert({
-        where: { name: obj.name },
+        where: { name: obj.name, name_environmentId: undefined },
         create: {
           name: obj.name,
           type: obj.type,
