@@ -13,7 +13,7 @@
   "dependencies": {
     "@portofolio/ui": "workspace:*",
     "lucide-react": "^0.553.0",
-    "next": "^16.0.1",
+    "next": "^16.0.7",
     "posthog-js": "^1.293.0",
     "posthog-node": "^5.11.2",
     "react": "^19.2.0",
