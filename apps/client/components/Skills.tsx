@@ -73,15 +73,14 @@ export default async function Skills() {
                 Informations
               </h3>
               <p className="leading-8 lg:leading-10 lg:text-2xl mt-2 max-w-dvw block lg:max-w-5xl">
-                The skills shown above are ones I use daily in my current role
+                The skills shown above are the ones I use daily in my current role.
                 <br />
                 Those under{" "}
                 <span className="text-business-moonstone font-bold italic">
                   More
                 </span>{" "}
                 are skills I&apos;ve worked with in previous positions or
-                personal projects.are skills that I&apos;ve worked with on
-                previous jobs or on my personal projects.
+                personal projects.
               </p>
             </div>
           </div>

@@ -6,9 +6,22 @@ import { Suspense } from "react";
 import PreviewCVButton from "client/components/PreviewCV";
 import Experience from "client/components/Experience";
 import { Loader } from "@portofolio/ui/Loader";
+import { cacheLife } from "next/cache";
+
+export async function getYear() {
+  "use cache";
+  cacheLife({
+    expire: 2592000,
+    stale: 2592000,
+  });
+  return new Date().getFullYear();
+}
 
 export default async function Page() {
   "use server";
+
+  const year = await getYear();
+
   return (
     <main className="px-10 py-25 lg:py-50 h-full">
       <section className="grid gap-x-10 gap-y-10 grid-cols-[2fr_1fr] md:grid-cols-2 ">
@@ -22,14 +35,17 @@ export default async function Page() {
             </h1>
             <div className="py-4 lg:py-8 place-items-end">
               <div>
-                <InfoPin iconName="code" text="Software Engineer" />
+                <InfoPin iconName="code" text="Full Stack Developer" />
                 <InfoPin iconName="map-pin" text="Based in Romania" />
-                <InfoPin iconName="calendar" text={`4+ years of experience`} />
+                <InfoPin
+                  iconName="calendar"
+                  text={`${year - 2021}+ years of experience`}
+                />
               </div>
             </div>
             <div className="place-items-end pb-3">
               <p className="font-semibold text-xl lg:text-3xl max-w-110 text-end">
-                Passionate about programming for over 6 years.
+                Passionate about programming for over {year - 2019} years.
               </p>
             </div>
             <div className="place-items-end pt-5">

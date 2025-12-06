@@ -20,7 +20,7 @@ export default async function Experience() {
             <div className="flex flex-col gap-5">
               <div className="place-items-center lg:place-items-end">
                 <Link
-                  href="https://www.ensemblesoftware.ro/"
+                  href={project.left.imageURL}
                   rel="noreferrer"
                   target="_blank"
                   className="block hover:drop-shadow-moonstone"
@@ -42,7 +42,7 @@ export default async function Experience() {
             <div className="flex flex-col gap-5">
               <div className="place-items-center lg:place-items-start">
                 <Link
-                  href="https://www.trimble.com/en"
+                  href={project.right.imageURL}
                   rel="noreferrer"
                   target="_blank"
                   className="block hover:drop-shadow-moonstone"

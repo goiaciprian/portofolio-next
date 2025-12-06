@@ -7,6 +7,7 @@ export const dynamic = "force-dynamic";
 export default async function PreviewCVButton() {
   await connection();
   const cvLink = await getCVUrl();
+  console.log(cvLink);
   return (
     <Button
       text="Preview CV"

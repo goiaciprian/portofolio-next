@@ -1,4 +1,4 @@
-import { Project, Skills } from "./ui.types";
+import { Environment, Project, Skills } from "./types";
 import { prisma } from "./client";
 import { getFileUrl } from "./utils";
 
@@ -11,7 +11,13 @@ export const getCVUrl = async () => {
 };
 
 export const getSkills = async (): Promise<Skills> => {
-  const skillsRaw = await prisma.skill.findMany();
+  const skillsRaw = await prisma.skill.findMany({
+    where: {
+      environment: {
+        name: Environment.PRODUCTION,
+      },
+    },
+  });
   return skillsRaw.reduce(
     (final, current) => {
       if (current.type === "MAIN") {
@@ -30,6 +36,11 @@ export const getSkills = async (): Promise<Skills> => {
 
 export const getProjects = async (): Promise<Project[]> => {
   const data = await prisma.project.findMany({
+    where: {
+      environment: {
+        name: Environment.PRODUCTION,
+      },
+    },
     select: {
       left: true,
       right: true,
@@ -38,4 +49,4 @@ export const getProjects = async (): Promise<Project[]> => {
   return data as Project[];
 };
 
-export * from "./ui.types";
+export * from "./types";

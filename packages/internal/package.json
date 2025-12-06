@@ -9,6 +9,10 @@
     "./client": {
       "types": "./dist/ui.d.ts",
       "default": "./dist/ui.js"
+    },
+    "./cms": {
+      "types": "./dist/cms.d.ts",
+      "default": "./dist/cms.js"
     }
   },
   "scripts": {
