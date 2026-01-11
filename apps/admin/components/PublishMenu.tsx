@@ -1,17 +1,6 @@
-import { Environment } from "@portofolio/internal/cms";
-import { useRouter } from "next/navigation";
-import { api } from "~/lib/eden";
+import { publish } from "~/actions/publish.action";
 
 export function PublishMenu() {
-  const router = useRouter();
-  const publish = async (from: string, to: string) => {
-    await api.publish.post({
-      from: from as Environment,
-      to: to as Environment,
-    });
-    router.refresh();
-  };
-
   return (
     <>
       <div
@@ -24,7 +13,7 @@ export function PublishMenu() {
             className="cursor-pointer"
             popoverTarget="publishMenu"
             popoverTargetAction="hide"
-            onClick={() => publish("STAGING", "PRODUCTION")}
+            formAction={() => publish("STAGING", "PRODUCTION")}
           >
             Publish Stage to Production
           </button>
@@ -33,7 +22,7 @@ export function PublishMenu() {
             className="cursor-pointer"
             popoverTarget="publishMenu"
             popoverTargetAction="hide"
-            onClick={() => publish("PRODUCTION", "STAGING")}
+            formAction={() => publish("PRODUCTION", "STAGING")}
           >
             Revert Stage to Production
           </button>
@@ -41,7 +30,7 @@ export function PublishMenu() {
             className="cursor-pointer"
             popoverTarget="publishMenu"
             popoverTargetAction="hide"
-            onClick={() => publish("BACKUP_PRODUCTION", "PRODUCTION")}
+            formAction={() => publish("BACKUP_PRODUCTION", "PRODUCTION")}
           >
             Revert Production to BACKUP
           </button>
@@ -49,7 +38,7 @@ export function PublishMenu() {
             className="cursor-pointer"
             popoverTarget="publishMenu"
             popoverTargetAction="hide"
-            onClick={() => publish("BACKUP_PRODUCTION", "STAGING")}
+            formAction={() => publish("BACKUP_PRODUCTION", "STAGING")}
           >
             Revert Stage to BACKUP
           </button>

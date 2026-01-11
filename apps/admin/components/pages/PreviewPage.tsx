@@ -3,7 +3,6 @@ import { Environment, getProjects } from "@portofolio/internal/cms";
 import { Fragment } from "react";
 import { ProjectSide } from "../ProjectPreview";
 
-
 export async function PreviewPage() {
   const [projects, skills] = await Promise.all([
     getProjects(Environment.PRODUCTION),
@@ -19,16 +18,23 @@ export async function PreviewPage() {
         <div className="flex flex-col gap-6">
           {projects.map((project) => (
             <Fragment key={project.id}>
-              <ProjectSide
-                description={project.left.description}
-                image={project.left.image}
-                imageURL={project.left.imageURL}
-              />
-              <ProjectSide
-                description={project.right.description}
-                image={project.right.image}
-                imageURL={project.right.imageURL}
-              />
+              {project.left && (
+                <ProjectSide
+                  side="left"
+                  description={project.left.description}
+                  image={project.left.image}
+                  imageURL={project.left.imageURL}
+                />
+              )}
+
+              {project.right && (
+                <ProjectSide
+                  side="right"
+                  description={project.right.description}
+                  image={project.right.image}
+                  imageURL={project.right.imageURL}
+                />
+              )}
             </Fragment>
           ))}
         </div>

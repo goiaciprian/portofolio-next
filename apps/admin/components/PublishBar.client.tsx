@@ -2,25 +2,27 @@
 
 import { PublishMenu } from "./PublishMenu";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
 import { Environment } from "@portofolio/internal/cms";
-import { api } from "~/lib/eden";
 
-export default function PublishBar() {
+export default function PublishBarClient({
+  environments,
+}: {
+  environments: Environment[];
+}) {
   const params = useSearchParams();
   const router = useRouter();
 
-  const [environments, setEnvironments] = useState<Environment[]>([
-    "PRODUCTION" as Environment.PRODUCTION,
-  ]);
+  // const [environments, setEnvironments] = useState<Environment[]>([
+  //   "PRODUCTION" as Environment.PRODUCTION,
+  // ]);
 
-  useEffect(() => {
-    const getEnvs = async () => {
-      const data = await api.environments.get();
-      setEnvironments(data.data ?? ["PRODUCTION" as Environment.PRODUCTION]);
-    };
-    getEnvs();
-  }, []);
+  // useEffect(() => {
+  //   const getEnvs = async () => {
+  //     const data = await api.environments.get();
+  //     setEnvironments(data.data ?? ["PRODUCTION" as Environment.PRODUCTION]);
+  //   };
+  //   getEnvs();
+  // }, []);
   const env = params.get("env") ?? "PRODUCTION";
 
   return (

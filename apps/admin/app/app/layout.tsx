@@ -3,7 +3,7 @@ import { auth } from "~/auth";
 import { redirect } from "next/navigation";
 import Providers from "~/components/Providers";
 import Navbar from "~/components/Navbar";
-import PublishBar from "~/components/PublishBar";
+import PublishBarServer from "~/components/PublishBar.server";
 
 export default async function Layout({
   children,
@@ -21,7 +21,7 @@ export default async function Layout({
         <div className="w-full">
           <Navbar />
           <main className="inline-flex flex-col align-top">
-            <PublishBar />
+            <PublishBarServer />
             <div>{children}</div>
           </main>
         </div>
