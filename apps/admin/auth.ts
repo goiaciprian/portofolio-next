@@ -13,6 +13,6 @@ const result = NextAuth({
 });
 
 export const auth: NextAuthResult["auth"] = result.auth;
-export const signIn = result.signIn;
+export const signIn: typeof result.signIn = result.signIn;
 export const handlers = result.handlers;
 export const signOut = result.signOut;

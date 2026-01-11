@@ -7,11 +7,12 @@ export type Skills = {
 
 export type Project = Record<
   "left" | "right",
-  {
-    description: string;
-    image: string;
-    imageURL: string;
-  }
+  | {
+      description: string;
+      image: string;
+      imageURL: string;
+    }
+  | undefined
 >;
 
 export type CmsProject = {

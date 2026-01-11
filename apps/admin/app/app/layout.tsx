@@ -3,6 +3,7 @@ import { auth } from "~/auth";
 import { redirect } from "next/navigation";
 import Providers from "~/components/Providers";
 import Navbar from "~/components/Navbar";
+import PublishBar from "~/components/PublishBar";
 
 export default async function Layout({
   children,
@@ -17,8 +18,13 @@ export default async function Layout({
   return (
     <>
       <Providers user={session.user}>
-        <Navbar />
-        <main>{children}</main>
+        <div className="w-full">
+          <Navbar />
+          <main className="inline-flex flex-col align-top">
+            <PublishBar />
+            <div>{children}</div>
+          </main>
+        </div>
       </Providers>
     </>
   );

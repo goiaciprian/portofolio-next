@@ -1,4 +1,4 @@
-import { list } from "@vercel/blob";
+import { list, put } from "@vercel/blob";
 
 type FileType = "files/" | "images/";
 
@@ -13,3 +13,14 @@ export const getFiles = (type: FileType) =>
     token: process.env.BLOB_STORAGE_READ_WRITE_TOKEN,
     prefix: type,
   }).then((data) => data.blobs.filter((obj) => obj.pathname !== type));
+
+/**
+ * @returns the image url
+ */
+export const uploadImage = async (file: File) => {
+  const { url } = await put(`images/${file.name}`, file, {
+    access: "public",
+    token: process.env.BLOB_STORAGE_READ_WRITE_TOKEN,
+  });
+  return url;
+};

@@ -21,7 +21,7 @@
     "db:generate": "prisma generate",
     "postinstall": "prisma generate",
     "db:push": "prisma db push",
-    "db:seed": "node --import=tsx --env-file=.env src/seed.ts"
+    "db:seed": "bun --env-file=.env src/seed.ts"
   },
   "devDependencies": {
     "@portofolio/eslint-config": "workspace:*",

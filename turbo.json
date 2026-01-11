@@ -11,7 +11,8 @@
     "AUTHENTIK_CLIENT_ID",
     "AUTHENTIK_CLIENT_SECRET",
     "AUTHENTIK_ISSUER",
-    "AUTH_SECRET"
+    "AUTH_SECRET",
+    "CONFIG"
   ],
   "tasks": {
     "build": {

@@ -1,12 +1,15 @@
 import { Environment } from "@portofolio/internal/cms";
+import { useRouter } from "next/navigation";
 import { api } from "~/lib/eden";
 
 export function PublishMenu() {
+  const router = useRouter();
   const publish = async (from: string, to: string) => {
     await api.publish.post({
       from: from as Environment,
       to: to as Environment,
     });
+    router.refresh();
   };
 
   return (

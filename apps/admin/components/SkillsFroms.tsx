@@ -3,7 +3,7 @@
 import { useActionState } from "react";
 import { createSkill } from "~/actions/skills.actions";
 
-export function SkillsFroms() {
+export function SkillsFroms({ disable=false }: { disable?: boolean }) {
   const [state, formAction, pending] = useActionState(createSkill, {
     name: "",
     type: "",
@@ -11,7 +11,7 @@ export function SkillsFroms() {
 
   return (
     <div>
-      <h3 className="font-semibold text-3xl pb-4">Create a new skills</h3>
+      <h3 className="font-semibold text-3xl pb-4">Add a new skill</h3>
       <form action={formAction}>
         <div className="flex flex-col gap-10">
           <div className="flex flex-col gap-2">
@@ -22,9 +22,9 @@ export function SkillsFroms() {
               <input
                 id="name"
                 name="name"
-                className="max-w-min outline-none text-2xl"
+                className="max-w-min outline-none text-2xl disabled:opacity-50 "
                 defaultValue={state.name}
-                disabled={pending}
+                disabled={pending || disable}
               />
             </div>
             <div className="text-xl text-red-500">
@@ -41,9 +41,9 @@ export function SkillsFroms() {
               <select
                 id="type"
                 name="type"
-                className="outline-none w-full text-2xl bg-business-black"
+                className="outline-none w-full text-2xl bg-business-black disabled:opacity-50"
                 defaultValue={state.type}
-                disabled={pending}
+                disabled={pending || disable}
               >
                 <option disabled className="text-xl py-2" value="">
                   Select type
@@ -78,10 +78,10 @@ export function SkillsFroms() {
           </div>
           <button
             type="submit"
-            className="text-2xl font-semibold cursor-pointer px-6 py-3  rounded hover:border border-business-moonstone hover:text-business-moonstone"
-            disabled={pending}
+            className="text-2xl font-semibold not-disabled:cursor-pointer px-6 py-3  rounded not-disabled:hover:border border-business-moonstone not-disabled:hover:text-business-moonstone disabled:opacity-50 "
+            disabled={pending || disable}
           >
-            Create
+            Submit
           </button>
         </div>
       </form>

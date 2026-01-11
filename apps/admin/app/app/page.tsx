@@ -21,7 +21,7 @@ export default async function Page({
       case "preview":
         return <PreviewPage />;
       case "projects":
-        return <ProjectsPage />;
+        return <ProjectsPage env={env} />;
       case "skills":
         return <SkillsPage env={env} />;
       default:
@@ -37,9 +37,7 @@ export default async function Page({
         </div>
       }
     >
-      <section className="w-screen px-10 pt-20 flex flex-col gap-10">
-        {render()}
-      </section>
+      <section className="px-10 flex flex-col gap-10">{render()}</section>
     </Suspense>
   );
 }

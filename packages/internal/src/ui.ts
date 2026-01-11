@@ -14,7 +14,7 @@ export const getSkills = async (): Promise<Skills> => {
   const skillsRaw = await prisma.skill.findMany({
     where: {
       environment: {
-        name: Environment.PRODUCTION,
+        name: process.env.CONFIG ?? "PRODUCTION",
       },
     },
   });
@@ -30,7 +30,7 @@ export const getSkills = async (): Promise<Skills> => {
     {
       main: [] as string[],
       other: [] as string[],
-    }
+    },
   );
 };
 
@@ -38,7 +38,7 @@ export const getProjects = async (): Promise<Project[]> => {
   const data = await prisma.project.findMany({
     where: {
       environment: {
-        name: Environment.PRODUCTION,
+        name: process.env.CONFIG ?? "PRODUCTION",
       },
     },
     select: {

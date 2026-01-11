@@ -17,48 +17,52 @@ export default async function Experience() {
           className="grid place-items-center grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-10 mt-10"
         >
           <div className="max-w-fit lg:place-self-end">
-            <div className="flex flex-col gap-5">
-              <div className="place-items-center lg:place-items-end">
-                <Link
-                  href={project.left.imageURL}
-                  rel="noreferrer"
-                  target="_blank"
-                  className="block hover:drop-shadow-moonstone"
-                >
-                  <Image
-                    src={project.left.image}
-                    width="155"
-                    height="200"
-                    alt="ensemble"
-                  />
-                </Link>
+            {project.left && (
+              <div className="flex flex-col gap-5">
+                <div className="place-items-center lg:place-items-end">
+                  <Link
+                    href={project.left.imageURL}
+                    rel="noreferrer"
+                    target="_blank"
+                    className="block hover:drop-shadow-moonstone"
+                  >
+                    <Image
+                      src={project.left.image}
+                      width="155"
+                      height="200"
+                      alt="ensemble"
+                    />
+                  </Link>
+                </div>
+                <p className="font-semibold lg:text-xl max-w-100">
+                  {project.left.description}
+                </p>
               </div>
-              <p className="font-semibold lg:text-xl max-w-100">
-                {project.left.description}
-              </p>
-            </div>
+            )}
           </div>
           <div className="max-w-fit lg:place-self-start">
-            <div className="flex flex-col gap-5">
-              <div className="place-items-center lg:place-items-start">
-                <Link
-                  href={project.right.imageURL}
-                  rel="noreferrer"
-                  target="_blank"
-                  className="block hover:drop-shadow-moonstone"
-                >
-                  <Image
-                    src={project.right.image}
-                    width="135"
-                    height="200"
-                    alt="ensemble"
-                  />
-                </Link>
+            {project.right && (
+              <div className="flex flex-col gap-5">
+                <div className="place-items-center lg:place-items-start">
+                  <Link
+                    href={project.right.imageURL}
+                    rel="noreferrer"
+                    target="_blank"
+                    className="block hover:drop-shadow-moonstone"
+                  >
+                    <Image
+                      src={project.right.image}
+                      width="135"
+                      height="200"
+                      alt="ensemble"
+                    />
+                  </Link>
+                </div>
+                <p className="font-semibold lg:text-xl max-w-100">
+                  {project.right.description}
+                </p>
               </div>
-              <p className="font-semibold lg:text-xl max-w-100">
-                {project.right.description}
-              </p>
-            </div>
+            )}
           </div>
         </section>
       ))}

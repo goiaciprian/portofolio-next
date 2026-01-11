@@ -17,20 +17,23 @@ export async function SkillsPage({ env }: { env: Environment }) {
           <h3 className="font-semibold text-3xl pb-4">Existing skills</h3>
           <div>
             <ul>
+              {skills.length === 0 && <li className="text-2xl py-2">Empty</li>}
               {skills.map((skill) => (
                 <li key={skill.id} className="text-2xl py-2">
-                  <span className="inline-block pr-2">
-                    <button
-                      className="align-middle hover:text-business-moonstone cursor-pointer"
-                      onClick={async () => {
-                        "use server";
-                        await deleteSkillById(skill.id);
-                        revalidatePath("/app", "page");
-                      }}
-                    >
-                      <X className="size-6" />
-                    </button>
-                  </span>
+                  {env !== "PRODUCTION" && (
+                    <span className="inline-block pr-2">
+                      <button
+                        className="align-middle hover:text-business-moonstone cursor-pointer"
+                        onClick={async () => {
+                          "use server";
+                          await deleteSkillById(skill.id);
+                          revalidatePath("/app", "page");
+                        }}
+                      >
+                        <X className="size-6" />
+                      </button>
+                    </span>
+                  )}
                   <span className="align-middle">
                     {skill.name} ({skill.type})
                   </span>
@@ -39,7 +42,7 @@ export async function SkillsPage({ env }: { env: Environment }) {
             </ul>
           </div>
         </div>
-        <SkillsFroms />
+        <SkillsFroms disable={env !== "STAGING"} />
       </div>
     </>
   );
