@@ -2,6 +2,7 @@ import { Environment } from "@portofolio/internal/cms";
 import { Loader } from "@portofolio/ui/Loader";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import { deleteProject } from "~/actions/projects.actions";
 import { PreviewPage } from "~/components/pages/PreviewPage";
 import { ProjectsPage } from "~/components/pages/ProjectsPage";
 import { SkillsPage } from "~/components/pages/SkillsPage";
