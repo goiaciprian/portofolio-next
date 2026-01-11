@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@auth/core": "^0.41.1",
+    "@elysiajs/cors": "^1.4.1",
     "@elysiajs/eden": "^1.4.5",
     "@elysiajs/node": "^1.4.2",
     "@portofolio/internal": "workspace:*",

@@ -1,4 +1,5 @@
 import Elysia, { t } from "elysia";
+import { cors } from "@elysiajs/cors";
 import node from "@elysiajs/node";
 
 import {
@@ -11,6 +12,11 @@ const app = new Elysia({
   adapter: node(),
   prefix: "/api",
 })
+  .use(
+    cors({
+      origin: /https:\/\/stage(-cms)?.cipriang-software.work/,
+    }),
+  )
   .get("environments", async () => {
     const envs = await getEnvironments();
     return envs.map((env) => env.name) as Environment[];
@@ -33,7 +39,7 @@ const app = new Elysia({
           [Environment.STAGING]: Environment.STAGING,
         }),
       }),
-    }
+    },
   );
 export type app = typeof app;
 
