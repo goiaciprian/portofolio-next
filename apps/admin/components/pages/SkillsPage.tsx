@@ -20,7 +20,7 @@ export async function SkillsPage({ env }: { env: Environment }) {
               {skills.length === 0 && <li className="text-2xl py-2">Empty</li>}
               {skills.map((skill) => (
                 <li key={skill.id} className="text-2xl py-2">
-                  {env !== "PRODUCTION" && (
+                  {env === "STAGING" && (
                     <span className="inline-block pr-2">
                       <button
                         className="align-middle hover:text-business-moonstone cursor-pointer"

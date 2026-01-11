@@ -3,7 +3,7 @@ import "server-only";
 import { PrismaClientKnownRequestError } from "@prisma/client-runtime-utils";
 import { prisma, SkillType } from "./client";
 import { CmsProject, CmsSkill, Environment } from "./types";
-import { getFiles, uploadImage } from "./utils";
+import { getFiles, uploadImage, deleteImages } from "./utils";
 import { Prisma } from "../generated/prisma";
 
 export const getEnvironments = async () => {
@@ -218,4 +218,5 @@ export {
   type SkillType,
   Environment,
   uploadImage,
+  deleteImages,
 };

@@ -13,7 +13,9 @@ export function PublishMenu() {
             className="cursor-pointer"
             popoverTarget="publishMenu"
             popoverTargetAction="hide"
-            formAction={() => publish("STAGING", "PRODUCTION")}
+            onClick={() => {
+              publish("STAGING", "PRODUCTION");
+            }}
           >
             Publish Stage to Production
           </button>
@@ -22,7 +24,7 @@ export function PublishMenu() {
             className="cursor-pointer"
             popoverTarget="publishMenu"
             popoverTargetAction="hide"
-            formAction={() => publish("PRODUCTION", "STAGING")}
+            onClick={() => publish("PRODUCTION", "STAGING")}
           >
             Revert Stage to Production
           </button>
@@ -30,7 +32,7 @@ export function PublishMenu() {
             className="cursor-pointer"
             popoverTarget="publishMenu"
             popoverTargetAction="hide"
-            formAction={() => publish("BACKUP_PRODUCTION", "PRODUCTION")}
+            onClick={() => publish("BACKUP_PRODUCTION", "PRODUCTION")}
           >
             Revert Production to BACKUP
           </button>
@@ -38,7 +40,7 @@ export function PublishMenu() {
             className="cursor-pointer"
             popoverTarget="publishMenu"
             popoverTargetAction="hide"
-            formAction={() => publish("BACKUP_PRODUCTION", "STAGING")}
+            onClick={() => publish("BACKUP_PRODUCTION", "STAGING")}
           >
             Revert Stage to BACKUP
           </button>

@@ -1,12 +1,8 @@
-import {
-  deleteProjectById,
-  Environment,
-  getProjects,
-} from "@portofolio/internal/cms";
+import { Environment, getProjects } from "@portofolio/internal/cms";
 import { ProjectSide } from "../ProjectPreview";
 import { Fragment } from "react";
 import { ProjectForm } from "../ProjectForm";
-import { revalidatePath } from "next/cache";
+import { deleteProject } from "~/actions/projects.actions";
 
 export async function ProjectsPage({ env }: { env: Environment }) {
   const projects = await getProjects(env);
@@ -22,19 +18,24 @@ export async function ProjectsPage({ env }: { env: Environment }) {
             {projects.length === 0 && <p className="text-3xl p-5">Empty</p>}
             {projects.map((project) => (
               <Fragment key={project.id}>
-                <h1 className="pt-8 font-semibold text-2xl">
-                  <button
-                    className="pr-4 font-bold cursor-pointer"
-                    onClick={async () => {
-                      "use server";
-                      await deleteProjectById(project.id);
-                      revalidatePath("/app", "page");
-                    }}
-                  >
-                    X
-                  </button>
-                  Delete project row
-                </h1>
+                {env === "STAGING" && (
+                  <h1 className="pt-8 font-semibold text-2xl">
+                    <button
+                      className="pr-4 font-bold cursor-pointer"
+                      onClick={async () => {
+                        "use server";
+
+                        await deleteProject(project.id, [
+                          project.left?.image,
+                          project.right?.image,
+                        ]);
+                      }}
+                    >
+                      X
+                    </button>
+                    Delete project row
+                  </h1>
+                )}
                 {project.left && (
                   <ProjectSide
                     side="left"

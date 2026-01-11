@@ -3,6 +3,8 @@
 import z from "zod";
 import {
   createProject as createProjectInternal,
+  deleteImages,
+  deleteProjectById,
   Environment,
   uploadImage as uploadImageInternal,
 } from "@portofolio/internal/cms";
@@ -101,4 +103,17 @@ export const createProject = async (
     image_url_right: undefined,
     errors: parseLeft.error && parseRight.error ? errors : undefined,
   };
+};
+
+export const deleteProject = async (
+  id: string,
+  images: (string | undefined)[],
+) => {
+  const onlyUrls = images.filter((img) => img !== undefined);
+  const pathNames = onlyUrls.map((img) => img.match(/images\/.*/)?.[0] ?? null);
+  const imagesToDelete = pathNames.filter((img) => img !== null);
+
+  await deleteImages(imagesToDelete);
+  await deleteProjectById(id);
+  revalidatePath("/app", "page");
 };
