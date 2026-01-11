@@ -1,4 +1,4 @@
-import { list, put } from "@vercel/blob";
+import { list, put, del } from "@vercel/blob";
 
 type FileType = "files/" | "images/";
 
@@ -23,4 +23,10 @@ export const uploadImage = async (file: File) => {
     token: process.env.BLOB_STORAGE_READ_WRITE_TOKEN,
   });
   return url;
+};
+
+export const deleteImages = async (images: string[]) => {
+  await del(images, {
+    token: process.env.BLOB_STORAGE_READ_WRITE_TOKEN,
+  });
 };

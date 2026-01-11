@@ -100,14 +100,6 @@ export function ProjectForm({ disable = false }: { disable?: boolean }) {
               Image Right
             </label>
             <UploadFile name="image_right" disable={disable || pendingCreate} />
-            {/*<input
-              id="image_right"
-              name="image_right"
-              type="file"
-              accept="image/*"
-              disabled={disable || pendingCreate}
-              // defaultValue={stateCreate.image_right}
-            />*/}
             <div className="text-xl text-red-500">
               {(stateCreate.errors?.image_right ?? []).map((err, index) => (
                 <p key={index}>{err}</p>
