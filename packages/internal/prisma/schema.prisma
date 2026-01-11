@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Skill {
+  id   String    @id @default(uuid())
+  name String
+  type SkillType
+
+  environmentId String      @map("environment_id")
+  environment   Environment @relation(fields: [environmentId], references: [id])
+
+  @@unique([name, environmentId])
+  @@map("skill")
+}
+
+model Project {
+  id    String @id @default(uuid())
+  left  Json?
+  right Json?
+
+  environmentId String      @map("environment_id")
+  environment   Environment @relation(fields: [environmentId], references: [id])
+
+  @@map("project")
+}
+
+model Environment {
+  id   String @id @default(uuid())
+  name String @unique
+
+  project Project[]
+  skill   Skill[]
+
+  @@map("environment")
+}
+
+enum SkillType {
+  OTHER
+  MAIN
+}

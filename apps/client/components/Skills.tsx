@@ -1,6 +1,13 @@
 import { InfoIcon, X } from "lucide-react";
+import { getSkills } from "../../../packages/internal/dist/ui";
+import { connection } from "next/server";
 
-export const Skills = () => {
+export const dynamic = "force-dynamic";
+
+export default async function Skills() {
+  await connection();
+  const skills = await getSkills();
+
   return (
     <div>
       <h3 className="text-2xl lg:text-4xl font-bold">
@@ -8,18 +15,19 @@ export const Skills = () => {
         <button
           popoverTarget="details-popover"
           className="cursor-pointer ml-2 align-middle"
+          aria-label="skills informations"
         >
           <InfoIcon className="text-business-moonstone size-5 lg:size-6" />
         </button>
       </h3>
       <div className="py-4 lg:py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-3 gap-y-5">
-        {arr.map((item) => {
+        {skills.main.map((item) => {
           return (
             <div
               key={item}
               className="px-4 py-2 rounded-2xl bg-business-moonstone/20 flex justify-center shadow hover:shadow-moonstone select-none"
             >
-              <h5 className="lg:text-xl font-semibold">{item}</h5>
+              <h4 className="lg:text-xl font-semibold">{item}</h4>
             </div>
           );
         })}
@@ -32,13 +40,13 @@ export const Skills = () => {
 
           <div className="pt-5 pb-3">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-3 gap-y-5">
-              {arrLess.map((item) => {
+              {skills.other.map((item) => {
                 return (
                   <div
                     key={item}
                     className="px-4 py-2 rounded-2xl bg-business-moonstone/20 flex justify-center shadow hover:shadow-moonstone select-none"
                   >
-                    <h5 className="lg:text-xl font-semibold">{item}</h5>
+                    <h4 className="lg:text-xl font-semibold">{item}</h4>
                   </div>
                 );
               })}
@@ -61,15 +69,17 @@ export const Skills = () => {
           </button>
           <div className="m-4 top-[30vh] lg:top-[40vh] right-8 text-white bg-business-black-100 absolute h-60 rounded-2xl px-10">
             <div className="flex flex-col justify-center h-full">
-              <h3 className="text-xl lg:text-3xl font-semibold block">Informations</h3>
-              <p className="leading-8 lg:leading-10 lg:text-2xl mt-2 max-w-dvw block">
-                The skills shown above are ones I use daily in my current role
+              <h3 className="text-xl lg:text-3xl font-semibold block">
+                Informations
+              </h3>
+              <p className="leading-8 lg:leading-10 lg:text-2xl mt-2 max-w-dvw block lg:max-w-5xl">
+                The skills shown above are the ones I use daily in my current role.
                 <br />
                 Those under{" "}
                 <span className="text-business-moonstone font-bold italic">
                   More
                 </span>{" "}
-                are skills I&apos;ve worked with in previous positions or personal projects.are skills that I&apos;ve worked with on previous jobs or on my
+                are skills I&apos;ve worked with in previous positions or
                 personal projects.
               </p>
             </div>
@@ -78,8 +88,4 @@ export const Skills = () => {
       </div>
     </div>
   );
-};
-
-const arr = ["NextJS", "React", "NestJS", "PostgreSQL", "AWS"];
-
-const arrLess = ["Angular", ".NET", "Java", "MongoDB"];
+}

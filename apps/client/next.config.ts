@@ -5,12 +5,21 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    remotePatterns: [new URL("https://cdn.simpleicons.org/**"), {
-      protocol: 'https',
-      hostname: 'doodleipsum.com',
-      port: '',
-      pathname: '/**'
-    }]
+    remotePatterns: [
+      new URL("https://cdn.simpleicons.org/**"),
+      {
+        protocol: "https",
+        hostname: "doodleipsum.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "rt1kh4ljapvlmkvo.public.blob.vercel-storage.com",
+        port: "",
+        pathname: "/**",
+      },
+    ],
   },
   async rewrites() {
     return [
@@ -26,6 +35,7 @@ const nextConfig: NextConfig = {
   },
   // This is required to support PostHog trailing slash API requests
   skipTrailingSlashRedirect: true,
+  cacheComponents: true,
 };
 
 export default nextConfig;

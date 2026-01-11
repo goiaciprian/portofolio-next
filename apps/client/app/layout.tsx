@@ -2,7 +2,6 @@ import "@portofolio/ui/styles.css";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
-import { ClientMetadata } from "client/components/ClientMetadata";
 
 const geist = Geist({ subsets: ["latin"] });
 
@@ -73,9 +72,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <ClientMetadata />
-      </head>
       <body className={geist.className}>{children}</body>
     </html>
   );

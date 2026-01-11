@@ -1,0 +1,44 @@
+{
+  "name": "@portofolio/internal",
+  "version": "0.0.0",
+  "files": [
+    "dist"
+  ],
+  "license": "MIT",
+  "exports": {
+    "./client": {
+      "types": "./dist/ui.d.ts",
+      "default": "./dist/ui.js"
+    },
+    "./cms": {
+      "types": "./dist/cms.d.ts",
+      "default": "./dist/cms.js"
+    }
+  },
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc",
+    "db:generate": "prisma generate",
+    "postinstall": "prisma generate",
+    "db:push": "prisma db push",
+    "db:seed": "bun --env-file=.env src/seed.ts"
+  },
+  "devDependencies": {
+    "@portofolio/eslint-config": "workspace:*",
+    "@portofolio/typescript-config": "workspace:*",
+    "@types/node": "^22.19.1",
+    "eslint": "^9.39.1",
+    "prisma": "^7.1.0",
+    "tsx": "^4.21.0",
+    "typescript": "5.9.2"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.1.0",
+    "@prisma/client": "^7.1.0",
+    "@prisma/client-runtime-utils": "^7.1.0",
+    "@vercel/blob": "^2.0.0",
+    "@vercel/functions": "^3.3.4",
+    "dotenv": "^17.2.3",
+    "pg": "^8.16.3"
+  }
+}
