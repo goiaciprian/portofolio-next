@@ -1,5 +1,5 @@
 import { Button } from "@portofolio/ui/Button";
-import { getCVUrl } from "../../../packages/internal/dist/ui";
+import { getCVUrl } from "@portofolio/internal/client";
 import { connection } from "next/server";
 
 export const dynamic = "force-dynamic";
@@ -7,7 +7,6 @@ export const dynamic = "force-dynamic";
 export default async function PreviewCVButton() {
   await connection();
   const cvLink = await getCVUrl();
-  console.log(cvLink);
   return (
     <Button
       text="Preview CV"

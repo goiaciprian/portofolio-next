@@ -18,9 +18,9 @@ export async function getYear() {
 }
 
 export default async function Page() {
-  "use server";
+  // "use server";
 
-  const year = await getYear();
+  const year = 2026;
 
   return (
     <main className="px-10 py-25 lg:py-50 h-full">
@@ -51,7 +51,7 @@ export default async function Page() {
             <div className="place-items-end pt-5">
               <div className="flex gap-3 flex-wrap justify-end">
                 <div>
-                  <Suspense
+                  {/* <Suspense
                     fallback={
                       <Button
                         text="Preview CV"
@@ -65,7 +65,7 @@ export default async function Page() {
                     }
                   >
                     <PreviewCVButton />
-                  </Suspense>
+                  </Suspense> */}
                 </div>
                 <div>
                   <Button
@@ -85,12 +85,12 @@ export default async function Page() {
             </h1>
           </div>
         </div>
-        <div className="w-fit pt-1">
+        {/* <div className="w-fit pt-1">
           <Suspense fallback={<Loader className="size-10" />}>
             <Skills />
           </Suspense>
           <Contact />
-        </div>
+        </div> */}
       </section>
       <div className="lg:hidden place-self-center">
         <h1 className="text-3xl font-bold">Experience</h1>

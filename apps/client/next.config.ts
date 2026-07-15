@@ -1,6 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  serverExternalPackages: [
+    "@portofolio/internal",
+    "@prisma/client",
+    "@prisma/adapter-neon",
+    "pg",
+    "mongodb",
+  ],
   typescript: {
     ignoreBuildErrors: true,
   },
